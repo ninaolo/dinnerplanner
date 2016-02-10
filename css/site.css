@@ -1,0 +1,51 @@
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+}
+
+.header {
+	text-align: center;
+	background-color: #F8F8F8;
+	padding: 20px;
+}
+
+h2 {
+	font-size: 14px;
+}
+
+/* SIDEBAR VIEW */
+
+#sidebarView {
+	border: 0.5px solid #323232;
+	margin-top: 20px;
+}
+
+#sidebarView > #top {
+	padding: 20px;
+}
+
+#exampleView {
+	border: 0.5px solid #323232;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+#sidebarView > #col-headings {
+	background-color: #F8F8F8;
+	border-top: 2px solid #323232;
+	border-bottom: 2px solid #323232;
+}
+
+#sidebarView > #guests p {
+	display: inline;
+}
+
+#sidebarView > #dishes {
+	padding: 20px;
+}
+
+
+
+
+
