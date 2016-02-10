@@ -14,7 +14,14 @@ function showDishes(dishes, model) {
 		html += "</div>";
 
 		html += "</div>";
-	};
+	}
+
+	html += "<hr>";
+	html += "<div class='row'>";
+	html += "<div class='col-md-6 col-md-offset-6'>";
+	html += "SEK " + model.getTotalMenuPrice();
+	html += "</div>";
+	html += "</div>";
 
 	return html;
 }

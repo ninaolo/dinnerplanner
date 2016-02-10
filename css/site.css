@@ -1,3 +1,7 @@
+#container {
+	overflow: hidden;
+	width: 100%;
+}
 
 body {
 	font-family: 'Lato', sans-serif;
@@ -41,11 +45,44 @@ h2 {
 	display: inline;
 }
 
-#sidebarView > #dishes {
+#sidebarView > #dishes, #sidebarView > #confirm {
 	padding: 20px;
 }
 
+/* SELECT DISH VIEW */
 
+#selectDishView {
+	border: 0.5px solid #323232;
+	border-left: none;
+	margin-top: 20px;
+}
 
+#selectDishView > #search {
+	padding: 20px;
+	background-color: #F3F8CA;
+	border-bottom: 0.5px solid #323232;
+}
+
+#selectDishView > #search > h2 {
+	text-transform: uppercase;
+}
+
+#selectDishView > #showSearchResults {
+	padding: 40px 20px 20px 20px;
+}
+
+#selectDishView .image-box {
+	border: 0.5px solid #323232;
+	margin: 10px;
+	display: inline-block;
+	height: 130px;
+	width: 130px;
+	overflow: hidden;
+}
+
+#selectDishView .image-box .desc {
+	padding-top: 20px;
+	background-color: #F8F8F8;
+}
 
 
