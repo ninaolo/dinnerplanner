@@ -24,33 +24,53 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		var fullMenu = "";
+		var fullMenu = {};
 		for (var key in menu) {
-			var dish = this.getDish(menu[key]);
-			fullMenu += "<br>" + dish.type + ": " + dish.name;
+			fullMenu.push(this.getDish(menu[key]));
 		}
 		return fullMenu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 2
+		for (var key in menu) {
+			var dish = this.getDish(menu[key]);
+		}
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 2
+		var totalMenuPrice = 0;
+		for(var key in menu){
+			totalMenuPrice += this.getTotalDishPrice(menu[key]);
+		}
+		return totalMenuPrice;
+	}
+
+	//Returns the total price for a specific dish in the menu (all ingredients multiplied by the number of guests)
+	this.getTotalDishPrice = function(id){
+		var numberOfGuests = this.getNumberOfGuests();
+		var dish = this.getDish(id);
+		var total = 0;
+		for(var ingredient in dish.ingredients){
+			total += ingredient.price * numberOfGuests;
+		}
+		return total;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2 
+		var dish = this.getDish(id);
+		if(dish.type in menu){
+			delete menu[dish.type];
+		} 
+		menu[dish.type] = dish.id;
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
+		delete menu[this.getDish(id)];
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
