@@ -6,9 +6,13 @@ function showSearchResults(dishes) {
 		html += "<div class='col-md-3'>";
 		html += "<div class='image-box'>";
 		html += "<img src='images/" + dishes[i].image + "' />";
-		html += "<div class='desc'><p>NAME</p></div>"
+		html += "<div class='desc'><p>" + dishes[i].name + "</p></div>"
 		html += "</div>";
-		html += "<p>" + dishes[i].description + "</p>"
+		if (dishes[i].description.length > 90) {
+			html += "<p>" + dishes[i].description.substr(0,90) + "...</p>";
+		} else {
+			html += "<p>" + dishes[i].description + "</p>"
+		}
 		html += "</div>";
 	}
 	html += "</div>";
@@ -18,12 +22,15 @@ function showSearchResults(dishes) {
 //ExampleView Object constructor
 var SelectDishView = function (container, model) {
 
-	var dishType = "Main";
-	this.dishType = container.find("#dishType");
-	this.dishType.html(dishType);
+	container.load("fragments/select.html", function() {
+		var dishType = "Main";
+		this.dishType = container.find("#dishType");
+		this.dishType.html(dishType);
 
-	this.showSearchResults = container.find("#showSearchResults");
-	var dishes = model.getAllDishes("starter");
-	this.showSearchResults.html(showSearchResults(dishes));
+		this.showSearchResults = container.find("#showSearchResults");
+		var dishes = model.getAllDishes("main dish");
+		this.showSearchResults.html(showSearchResults(dishes));
+	});
+
 	
 }

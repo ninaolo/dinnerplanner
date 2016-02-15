@@ -1,44 +1,91 @@
-#container {
-	overflow: hidden;
-	width: 100%;
-}
 
-body {
-	font-family: 'Lato', sans-serif;
-	font-weight: 100;
-}
+/* GENERAL STUFF */
 
-.header {
-	text-align: center;
-	background-color: #F8F8F8;
-	padding: 20px;
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,300);
+
+html,body {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 300;
 }
 
 h2 {
 	font-size: 14px;
 }
 
+#main-wrapper {
+	padding-top: 50px;
+}
+
+.btn {
+	border-radius: 0px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+	background: #1FB18A;
+	border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    background: #1B9172;
+    color: #ffffff;
+}
+
+
+/* HEADER */
+
+.header {
+	text-align: left;
+	background-color: #F8F8F8;
+	padding: 30px 0px 30px 0px;
+}
+
+.header h1 {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 400;
+	font-size: 40px;
+	text-transform: uppercase;
+}
+
+.header h2 {
+	font-family: 'Quicksand', sans-serif;
+	font-style: italic;
+}
+
+
+/* HOME VIEW */
+#homeView {
+	background-color: #1FB18A;
+	height: 500px;
+}
+
+#homeView > #home {
+	background-color: rgba(250,250,250,0.7);
+	width: 500px;
+	padding: 20px;
+	margin: 80px 0px 0px 30px;
+}
+
+
 /* SIDEBAR VIEW */
 
 #sidebarView {
 	border: 0.5px solid #323232;
-	margin-top: 20px;
+	height: 500px;
 }
 
 #sidebarView > #top {
 	padding: 20px;
 }
 
-#exampleView {
-	border: 0.5px solid #323232;
-	margin-top: 20px;
-	padding: 20px;
-}
-
 #sidebarView > #col-headings {
+	margin-top: 20px;
 	background-color: #F8F8F8;
-	border-top: 2px solid #323232;
-	border-bottom: 2px solid #323232;
+	border-top: 0.5px solid #323232;
+	border-bottom: 0.5px solid #323232;
 }
 
 #sidebarView > #guests p {
@@ -54,12 +101,12 @@ h2 {
 #selectDishView {
 	border: 0.5px solid #323232;
 	border-left: none;
-	margin-top: 20px;
+	height: 500px;
 }
 
 #selectDishView > #search {
 	padding: 20px;
-	background-color: #F3F8CA;
+	background-color: #FDFFE9;
 	border-bottom: 0.5px solid #323232;
 }
 
@@ -69,20 +116,28 @@ h2 {
 
 #selectDishView > #showSearchResults {
 	padding: 40px 20px 20px 20px;
+	height: 300px;
+	overflow: scroll;
 }
 
 #selectDishView .image-box {
-	border: 0.5px solid #323232;
+	border: 1px solid #323232;
 	margin: 10px;
 	display: inline-block;
-	height: 130px;
-	width: 130px;
-	overflow: hidden;
+	height: 150px;
+	width: 150px;
 }
 
 #selectDishView .image-box .desc {
-	padding-top: 20px;
+	height: 30px; /* 20% of 130px */
 	background-color: #F8F8F8;
+	text-align: center;
+}
+
+#selectDishView .image-box img {
+	width: 100%;
+	height: 80%;
+	border-bottom: 1px solid #323232;
 }
 
 
