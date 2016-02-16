@@ -5,22 +5,25 @@ function dinnerDishes(dishes, model){
 
 	for (var i = 0; i< dishes.length; i++){
 		var dishDiv = document.createElement('div');
-		dishDiv.className = "dish";
+		dishDiv.className ="col-md-3";
+		dishDiv.id="dish";
 
 		var div = document.createElement('div');
-		div.className = 'image-box';
+		div.className ="image-box";
 
 		var img = document.createElement('img');
-		img.src= "images/"+dishes[i].image;
+		img.src="images/"+dishes[i].image;
 
 		var nameDiv = document.createElement('div');
-		nameDiv.className = "desc";
+		nameDiv.className ="desc";
 		var name = document.createElement('p');
 		name.innerHTML= dishes[i].name;
 
 		var cost = document.createElement('p');
+		cost.id="cost"
+		cost.className="col-md-3"
 		cost.innerHTML= model.getTotalDishPrice(dishes[i].id) +" SEK";
-		totalCost += cost;
+		totalCost += model.getTotalDishPrice(dishes[i].id);
 
 		nameDiv.appendChild(name);
 		div.appendChild(img);
@@ -35,7 +38,15 @@ function dinnerDishes(dishes, model){
 	return totalCost;
  
 }
-
+/*
+<div class="col-md-3">
+	<div class='image-box'>
+		<img src='images/dishes[i].image' />
+		<div class='desc'><p> dishes[i].name</p></div>
+	</div>
+	<p>description</p>
+</div>
+*/
 
 function showSearchResults(dishes) {
 	html = "<div class='row'>";
@@ -63,7 +74,7 @@ var DinnerView = function (container, model) {
 	container.load("fragments/dinner.html", function() {
 		var dishes = model.getFullMenu();
 		this.dinnerDishes = container.find("#dinnerDishes");
-		container.find(".totalCost").html("<p>"+dinnerDishes(dishes, model)+" SEK</p>");
+		container.find("#totalCost").append("<p>"+dinnerDishes(dishes, model)+" SEK</p>");
 	});
 
 	
