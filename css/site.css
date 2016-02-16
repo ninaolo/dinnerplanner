@@ -156,6 +156,7 @@ h2 {
 	padding: 10px 40px 30px 40px;
 }
 
+
 /* BACK AND EDIT VIEW */
 
 #backAndEditView {
@@ -167,3 +168,12 @@ h2 {
 #backAndEditView h1 {
 	font-size: 20px;
 }
+
+
+/* INSTRUCTIONS VIEW */
+
+#instructionsView {
+	padding: 20px;
+}
+
+
