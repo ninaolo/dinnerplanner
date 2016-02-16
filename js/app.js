@@ -13,7 +13,8 @@ $(function() {
 	$("#sidebarView").hide();
 	$("#selectDishView").hide();
 	$("#dishDetailsView").hide();
-	$("backAndEditView").hide();
+	$("#backAndEditView").hide();
+	$("#instructionsView").hide();
 
 
 
@@ -33,6 +34,11 @@ $(function() {
 
 	// SCREEN 5 - DINNER OVERVIEW 
 
+	//$("#backAndEditView").show();
+
+	// SCREEN 6 - INSTRUCTIONS
+
 	$("#backAndEditView").show();
+	$("#instructionsView").show();
 
 });
