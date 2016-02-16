@@ -167,3 +167,30 @@ h2 {
 #backAndEditView h1 {
 	font-size: 20px;
 }
+
+/* DINNER VIEW */
+
+#verticalLine {
+    border-left: thick solid #ff0000;
+}
+
+/* upprepning från selectDishView*/
+#dinnerView .image-box {
+	border: 1px solid #323232;
+	margin: 10px;
+	display: inline-block;
+	height: 150px;
+	width: 150px;
+}
+
+#dinnerDishView .image-box .desc {
+	height: 30px; /* 20% of 130px */
+	background-color: #F8F8F8;
+	text-align: center;
+}
+
+#dinnertDishView .image-box img {
+	width: 100%;
+	height: 80%;
+	border-bottom: 1px solid #323232;
+}

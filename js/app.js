@@ -8,6 +8,7 @@ $(function() {
 	var dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
 	var backAndEditView = new BackAndEditView ($("#backAndEditView"), model);
 	var instructionsView = new InstructionsView ($("#instructionsView"), model);
+	var dinnerView = new DinnerView($("#dinnerView"),model);
 	
 	// hide() and show() will later be fixed with controllers
 	$("#homeView").hide();
@@ -16,6 +17,7 @@ $(function() {
 	$("#dishDetailsView").hide();
 	$("#backAndEditView").hide();
 	$("#instructionsView").hide();
+	$("#dinnerView").hide();
 
 
 
@@ -36,6 +38,7 @@ $(function() {
 	// SCREEN 5 - DINNER OVERVIEW 
 
 	//$("#backAndEditView").show();
+	//$("#dinnerView").show();
 
 	// SCREEN 6 - INSTRUCTIONS
 
