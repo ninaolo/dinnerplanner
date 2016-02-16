@@ -156,3 +156,23 @@ h2 {
 	padding: 10px 40px 30px 40px;
 }
 
+/* BACK AND EDIT VIEW */
+
+#backAndEditView {
+	border: 0.5px solid #323232;
+	height: 300px;
+	background-color:  #FDFFE9;
+	padding: 30px;
+}
+
+
+#backAndEditView > h2 {
+	float: left;
+	font-family: 'Quicksand', sans-serif;
+}
+
+#backAndEditView > button {
+	float: right;
+	background: #1FB18A;
+	border: none;
+}
