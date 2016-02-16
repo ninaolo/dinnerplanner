@@ -26,6 +26,6 @@ var DishDetailsView = function (container, model) {
 		container.find("#dishPreparation").html(this.dish.description);
 		container.find("#nrOfPeople").html(model.getNumberOfGuests());
 		fillIngredientsTable(container, this.dish.ingredients);
-	})
+	});
 	
 }

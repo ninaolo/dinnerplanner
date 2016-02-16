@@ -8,3 +8,5 @@ var BackAndEditView = function (container, model) {
 	container.load("fragments/back_and_edit.html", function() {
 		this.numberOfGuests = container.find("#numberOfGuests");
 		this.numberOfGuests.html(model.getNumberOfGuests());
+	});
+}

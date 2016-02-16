@@ -6,7 +6,7 @@ $(function() {
 	var selectDishView = new SelectDishView($("#selectDishView"), model);
 	var homeView = new HomeView($("#homeView"), model);
 	var dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
-	var backAndEditView = new BackAndEditView ($("backAndEditView"), model);
+	var backAndEditView = new BackAndEditView ($("#backAndEditView"), model);
 	
 	// hide() and show() will later be fixed with controllers
 	$("#homeView").hide();
