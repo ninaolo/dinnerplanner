@@ -141,3 +141,17 @@ h2 {
 }
 
 
+/* DISH DETAILS VIEW */
+
+#dishDetailsView {
+	border: 0.5px solid #323232;
+	border-left: none;
+	height: 500px;
+	padding: 30px;
+}
+
+#dishIngredients {
+	background-color: #FDFFE9;
+	padding: 20px;
+}
+
