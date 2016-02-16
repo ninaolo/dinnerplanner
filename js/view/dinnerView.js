@@ -1,11 +1,9 @@
-$(document).ready(function() {
-    		});
 
-function dinnerDishes(dishes,model){
+function dinnerDishes(dishes, model){
 
 	var totalCost = 0 ;
 
-	for (var i = 0; i< dishes.length;1++){
+	for (var i = 0; i< dishes.length; i++){
 		var dishDiv = document.createElement('div');
 		dishDiv.className = "dish";
 
@@ -63,10 +61,9 @@ function showSearchResults(dishes) {
 var DinnerView = function (container, model) {
 
 	container.load("fragments/dinner.html", function() {
-
-	var dishes = model.getFullMenu();
-	this.dinnerDishes = container.find("#dinnerDishes");
-	container.find(".totalCost").innerHTML("<p>"+dinnerDishes(dishes)+" SEK</p>"));
+		var dishes = model.getFullMenu();
+		this.dinnerDishes = container.find("#dinnerDishes");
+		container.find(".totalCost").html("<p>"+dinnerDishes(dishes, model)+" SEK</p>");
 	});
 
 	
