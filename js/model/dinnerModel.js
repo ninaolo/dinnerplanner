@@ -6,10 +6,23 @@ var DinnerModel = function() {
 
 	var numberOfGuests = 8;
 	var menu = {'starter': 1, 'main dish': 100, 'dessert': 201};
+	var observers = [];
 
+	this.addObserver = function(observer) {
+		observers.push(observer);
+	}
+
+	this.notifyObservers = function(obj) {
+		for (var i = 0; i < observers.length; i++) {
+			observers[i].update(obj);
+		}
+	}
 
 	this.setNumberOfGuests = function(num) {
-		numberOfGuests = num;
+		if (num > 0) {
+			numberOfGuests = num;
+			this.notifyObservers();
+		}
 	}
 
 	// should return 
