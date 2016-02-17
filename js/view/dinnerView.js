@@ -36,7 +36,35 @@ function dinnerDishes(dishes, model){
 
 	}
 	return totalCost;
- 
+}
+
+function dinnerDishes2(dishes, model, dinnerDishes) {
+
+	var totalCost = 0;
+	var html = "";
+
+	for (var i = 0; i < dishes.length; i++) {
+
+		html += '<div class="col-md-3" id="dish">';
+			html += '<div class="image-box">';
+				html += '<img src="' + "images/" + dishes[i].image + '">';
+				html += '<div class="desc">';
+					html += '<p id="name">' + dishes[i].name + '</p>';
+				html += '</div>';
+			html += '</div>';
+			html += '<p id="cost">' + model.getTotalDishPrice(dishes[i].id) + ' SEK</p>';
+		html += '</div>';
+
+		totalCost += model.getTotalDishPrice(dishes[i].id);
+	}
+
+	html += '<div id="totalCost" class="col-md-3">';
+		html += '<p>Total:</p><p id="cost">' + totalCost + ' SEK</p>';
+	html += '</div>';
+
+	dinnerDishes.html(html);
+
+	return totalCost;
 }
 
 
@@ -45,7 +73,7 @@ var DinnerView = function (container, model) {
 	container.load("fragments/dinner.html", function() {
 		var dishes = model.getFullMenu();
 		this.dinnerDishes = container.find("#dinnerDishes");
-		container.find("#cost").html(dinnerDishes(dishes, model)+" SEK");
+		dinnerDishes2(dishes, model, this.dinnerDishes);
 	});
 
 	

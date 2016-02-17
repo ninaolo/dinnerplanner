@@ -27,8 +27,8 @@ $(function() {
 
 	// SCREEN 2 - SELECT DISH
 
-	//$("#sidebarView").show();
-	//$("#selectDishView").show();
+	$("#sidebarView").show();
+	$("#selectDishView").show();
 
 	// SCREEN 3 - DISH DETAILS
 
@@ -42,7 +42,7 @@ $(function() {
 
 	// SCREEN 6 - INSTRUCTIONS
 
-	$("#backAndEditView").show();
-	$("#instructionsView").show();
+	//$("#backAndEditView").show();
+	//$("#instructionsView").show();
 
 });

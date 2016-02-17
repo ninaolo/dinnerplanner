@@ -176,13 +176,14 @@ h2 {
 	padding: 40px 20px 20px 20px;
 }
 
-#verticalLine {
-    border-left: 1px solid #E1E1E1;
-    height: 200px;
+#totalCost {
+	padding-top: 140px;
+	text-align: left;
+	border-left: 1px solid #E1E1E1;
 }
 
-#totalCost {
-	float: left;
+#dish {
+	text-align: right;
 }
 
 /* upprepning från selectDishView*/
@@ -193,10 +194,6 @@ h2 {
 	height: 150px;
 	width: 150px;
 	float: center;
-}
-
-#dinnerView p {
-	text-align: center;
 }
 
 #dinnerView .image-box .desc {
@@ -211,11 +208,6 @@ h2 {
 	border-bottom: 1px solid #323232;
 }
 
-#dinnerView #dinnerDishes{
-	border-left: 1px solid black;
-	height: 100%;
-}
-
 
 /* INSTRUCTIONS VIEW */
 
@@ -226,5 +218,9 @@ h2 {
 #starter, #main, #dessert {
 	margin-top: 50px;
 	margin-bottom: 50px;
+}
+
+#instructionsView #dishPic {
+	padding-top: 50px;
 }
 
