@@ -37,12 +37,12 @@ $(function() {
 
 	// SCREEN 5 - DINNER OVERVIEW 
 
-	$("#backAndEditView").show();
-	$("#dinnerView").show();
+	//$("#backAndEditView").show();
+	//$("#dinnerView").show();
 
 	// SCREEN 6 - INSTRUCTIONS
 
-	//$("#backAndEditView").show();
-	//$("#instructionsView").show();
+	$("#backAndEditView").show();
+	$("#instructionsView").show();
 
 });

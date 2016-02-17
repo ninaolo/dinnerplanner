@@ -1,9 +1,9 @@
 
 function dinnerDishes(dishes, model){
 
-	var totalCost = 0 ;
+	var totalCost = 0;
 
-	for (var i = 0; i< dishes.length; i++){
+	for (var i = 0; i < dishes.length; i++) {
 		var dishDiv = document.createElement('div');
 		dishDiv.className ="col-md-3";
 		dishDiv.id="dish";
@@ -20,8 +20,8 @@ function dinnerDishes(dishes, model){
 		name.innerHTML= dishes[i].name;
 
 		var cost = document.createElement('p');
-		cost.id="cost"
-		cost.className="col-md-3"
+		cost.id="cost";
+		cost.className="row";
 		cost.innerHTML= model.getTotalDishPrice(dishes[i].id) +" SEK";
 		totalCost += model.getTotalDishPrice(dishes[i].id);
 
@@ -30,42 +30,13 @@ function dinnerDishes(dishes, model){
 		div.appendChild(nameDiv);
 		dishDiv.appendChild(div);
 
-		dishDiv.appendChild(cost)
+		dishDiv.appendChild(cost);
 
 		document.getElementById('dinnerDishes').appendChild(dishDiv);
 
 	}
 	return totalCost;
  
-}
-/*
-<div class="col-md-3">
-	<div class='image-box'>
-		<img src='images/dishes[i].image' />
-		<div class='desc'><p> dishes[i].name</p></div>
-	</div>
-	<p>description</p>
-</div>
-*/
-
-function showSearchResults(dishes) {
-	html = "<div class='row'>";
-
-	for (var i = 0; i < dishes.length; i++) {
-		html += "<div class='col-md-3'>";
-		html += "<div class='image-box'>";
-		html += "<img src='images/" + dishes[i].image + "' />";
-		html += "<div class='desc'><p>" + dishes[i].name + "</p></div>"
-		html += "</div>";
-		if (dishes[i].description.length > 90) {
-			html += "<p>" + dishes[i].description.substr(0,90) + "...</p>";
-		} else {
-			html += "<p>" + dishes[i].description + "</p>"
-		}
-		html += "</div>";
-	}
-	html += "</div>";
-	return html;
 }
 
 
@@ -74,7 +45,7 @@ var DinnerView = function (container, model) {
 	container.load("fragments/dinner.html", function() {
 		var dishes = model.getFullMenu();
 		this.dinnerDishes = container.find("#dinnerDishes");
-		container.find("#totalCost").append("<p>"+dinnerDishes(dishes, model)+" SEK</p>");
+		container.find("#cost").html(dinnerDishes(dishes, model)+" SEK");
 	});
 
 	
