@@ -3,6 +3,13 @@
 
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,300);
 
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
 html,body {
 	font-family: 'Quicksand', sans-serif;
 	font-weight: 300;
@@ -57,9 +64,9 @@ h2 {
 
 
 /* HOME VIEW */
+
 #homeView {
 	background-color: #1FB18A;
-	height: 500px;
 }
 
 #homeView > #home {
@@ -73,8 +80,7 @@ h2 {
 /* SIDEBAR VIEW */
 
 #sidebarView {
-	border: 0.5px solid #323232;
-	height: 500px;
+	border: 2px solid rgba(229,229,229,0.5);
 }
 
 #sidebarView > #top {
@@ -84,8 +90,6 @@ h2 {
 #sidebarView > #col-headings {
 	margin-top: 20px;
 	background-color: #F8F8F8;
-	border-top: 0.5px solid #323232;
-	border-bottom: 0.5px solid #323232;
 }
 
 #sidebarView > #guests p {
@@ -96,18 +100,17 @@ h2 {
 	padding: 20px;
 }
 
+
 /* SELECT DISH VIEW */
 
 #selectDishView {
-	border: 0.5px solid #323232;
+	border: 2px solid rgba(229,229,229,0.5);
 	border-left: none;
-	height: 500px;
 }
 
 #selectDishView > #search {
 	padding: 20px;
-	background-color: #FDFFE9;
-	border-bottom: 0.5px solid #323232;
+	border-bottom: 2px solid rgba(229,229,229,0.5);
 }
 
 #selectDishView > #search > h2 {
@@ -118,10 +121,13 @@ h2 {
 	padding: 40px 20px 20px 20px;
 	height: 300px;
 	overflow: scroll;
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	font-size: 12px;
 }
 
 #selectDishView .image-box {
-	border: 1px solid #323232;
+
 	margin: 10px;
 	display: inline-block;
 	height: 150px;
@@ -130,23 +136,24 @@ h2 {
 
 #selectDishView .image-box .desc {
 	height: 30px; /* 20% of 130px */
-	background-color: #F8F8F8;
+	background-color: #434343;
+	color: white;
 	text-align: center;
+	font-size: 15px;
+	font-family: 'Quicksand', sans-serif;
 }
 
 #selectDishView .image-box img {
 	width: 100%;
 	height: 80%;
-	border-bottom: 1px solid #323232;
 }
 
 
 /* DISH DETAILS VIEW */
 
 #dishDetailsView {
-	border: 0.5px solid #323232;
+	border: 0.5px solid #DFDFDF;
 	border-left: none;
-	height: 500px;
 	padding: 30px;
 	overflow: scroll;
 }
@@ -160,7 +167,7 @@ h2 {
 /* BACK AND EDIT VIEW */
 
 #backAndEditView {
-	border: 0.5px solid #323232;
+	border: 0.5px solid #DFDFDF;
 	background-color:  #FDFFE9;
 	padding: 30px;
 }
@@ -179,7 +186,7 @@ h2 {
 #totalCost {
 	padding-top: 140px;
 	text-align: left;
-	border-left: 1px solid #E1E1E1;
+	border-left: 1px solid #DFDFDF;
 }
 
 #dish {
@@ -188,7 +195,7 @@ h2 {
 
 /* upprepning från selectDishView*/
 #dinnerView .image-box {
-	border: 1px solid #323232;
+	border: 1px solid #DFDFDF;
 	margin: 10px;
 	display: inline-block;
 	height: 150px;
@@ -198,14 +205,14 @@ h2 {
 
 #dinnerView .image-box .desc {
 	height: 30px; /* 20% of 130px */
-	background-color: #F8F8F8;
+	background-color: #323232;
 	text-align: center;
 }
 
 #dinnerView .image-box img {
 	width: 100%;
 	height: 80%;
-	border-bottom: 1px solid #323232;
+	border-bottom: 1px solid #DFDFDF;
 }
 
 
