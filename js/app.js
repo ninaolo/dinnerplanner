@@ -10,9 +10,11 @@ $(function() {
 	var instructionsView = new InstructionsView ($("#instructionsView"), dinnerModel);
 	var dinnerView = new DinnerView($("#dinnerView"), dinnerModel);
 
-	var sidebarController = new SidebarController(sidebarView, dinnerModel, dinnerView, dishDetailsView, backAndEditView);
+	var sidebarController = new SidebarController(sidebarView, dinnerModel, dinnerView, selectDishView, backAndEditView);
 	var dishDetailsController = new DishDetailsController(dishDetailsView,selectDishView,dinnerModel);
 	var homeController = new HomeController(homeView,sidebarView,selectDishView);
+	var dinnerController = new DinnerController(dinnerView, dinnerModel, instructionsView);
+	var backAndEditController = new BackAndEditController(backAndEditView, selectDishView, instructionsView, dinnerView, sidebarView);
 	
 	// hide() and show() will later be fixed with controllers
 	$("#homeView").hide();
@@ -27,12 +29,12 @@ $(function() {
 
 	// SCREEN 1 - HOM
 	
-	$("#homeView").show();
+	//$("#homeView").show();
 
 	// SCREEN 2 - SELECT DISH
 
-	//$("#sidebarView").show();
-	//$("#selectDishView").show();
+	$("#sidebarView").show();
+	$("#selectDishView").show();
 
 	// SCREEN 3 - DISH DETAILS
 

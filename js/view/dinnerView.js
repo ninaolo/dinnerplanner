@@ -76,6 +76,7 @@ var DinnerView = function (container, model) {
 	var dishes = model.getFullMenu();
 	this.dinnerDishes = this.container.find("#dinnerDishes");
 	dinnerDishes2(dishes, model, this.dinnerDishes);
+	this.printRecipe = this.container.find("#printFullRecipe");
 
 
 	this.update = function(obj) {
