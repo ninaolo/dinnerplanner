@@ -2,12 +2,15 @@
 
 var BackAndEditView = function (container, model) {
 	
-	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
+	model.addObserver(this);
+
 	this.container = container;
 	this.backAndEditButton = container.find("#backAndEdit");
-
 	this.numberOfGuests = container.find("#numberOfGuests");
-	this.numberOfGuests.html(model.getNumberOfGuests());
 
+	this.update = function(obj) {
+		this.numberOfGuests.html(model.getNumberOfGuests());
+	}
+
+	this.update();
 }
