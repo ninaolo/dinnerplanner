@@ -14,12 +14,18 @@ function fillIngredientsTable(container, ingredientList) {
 	container.find("#total").html(totalCost);
 }
 
-var DishDetailsView = function (container, model) {
+var DishDetailsView = function (container, model, selectedDish) {
+
+	model.addObserver(this);
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
+	this.selectedDish = selectedDish;
+	this.confirmDish = container.find("#confirmDish");
+	this.backSelectDish = container.find("#backSelectDish");
+	this.container = container;
 
-	this.dish = model.getDish(1);
+	this.dish = model.getDish(selectedDish);
 	container.find("#dishName").html(this.dish.name);
 	container.find("#dishPic").attr("src", "images/" + this.dish.image);
 	container.find("#dishPreparation").html(this.dish.description);

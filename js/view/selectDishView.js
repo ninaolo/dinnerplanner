@@ -22,6 +22,7 @@ function showSearchResults(dishes) {
 //ExampleView Object constructor
 var SelectDishView = function (container, model) {
 
+	this.container = container;
 	var dishType = "Main";
 	this.dishType = container.find("#dishType");
 	this.dishType.html(dishType);
