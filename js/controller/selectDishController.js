@@ -4,4 +4,9 @@ var SelectDishController = function(selectDishView,dishDetailsView, dinnerModel)
         dishDetailsView.container.show();
         selectDishView.container.hide();
     });
+
+    selectDishView.searchButton.click(function(){
+        selectDishView.chosenType.text();
+    });
+
 }

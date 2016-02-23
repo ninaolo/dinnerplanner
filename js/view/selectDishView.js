@@ -35,6 +35,7 @@ var SelectDishView = function (container, model) {
 	this.container = container;
 	this.searchButton = container.find("#searchButton");
 	this.keyValues = container.find("#keyValues");
+	this.chosenType = container.find("#dishTypeSelection option:selected");
 
 
 	var types = model.getDishTypes();
