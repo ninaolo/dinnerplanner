@@ -1,16 +1,9 @@
 
 var DishDetailsController = function(dishDetailsView,selectDishView, dinnerModel) {
-    this.dishDetailsView = dishDetailsView;
-    this.dinnerModel = dinnerModel;
-    this.selectedDishView = selectDishView;
+    alert("dishes");
 
-    this.setEvents();
-    sidebarView.plusGuest.click(function() {dinnerModel.setNumberOfGuests(dinnerModel.getNumberOfGuests()+1);});
-    sidebarView.minusGuest.click(function() {dinnerModel.setNumberOfGuests(dinnerModel.getNumberOfGuests()-1);});
-}
-
-DishDetailsController.setEvents = function(){
     dishDetailsView.confirmDish.click(function(){
+        alert("confirm");
         dinnerModel.addDishToMenu(dishDetailsView.selectedDish);
         dishDetailsView.container.hide();
         selectedDishView.container.show();
@@ -20,7 +13,9 @@ DishDetailsController.setEvents = function(){
         dishDetailsView.container.hide();
         selectedDishView.container.show();
     });
+
 }
+
 
 
 
