@@ -71,9 +71,10 @@ function dinnerDishes2(dishes, model, dinnerDishes) {
 var DinnerView = function (container, model) {
 
 	model.addObserver(this);
+	this.container = container;
 
 	var dishes = model.getFullMenu();
-	this.dinnerDishes = container.find("#dinnerDishes");
+	this.dinnerDishes = this.container.find("#dinnerDishes");
 	dinnerDishes2(dishes, model, this.dinnerDishes);
 
 

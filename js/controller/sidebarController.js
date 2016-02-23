@@ -1,5 +1,5 @@
 
-var SidebarController = function(sidebarView, dinnerModel) {
+var SidebarController = function(sidebarView, dinnerModel, dinnerView, dishDetailsView, backAndEditView) {
 
     dinnerModel.addObserver(this);
 
@@ -14,7 +14,10 @@ var SidebarController = function(sidebarView, dinnerModel) {
     });
 
     sidebarView.confirmButton.click(function() {
-        dinnerView.show(100);
+        dishDetailsView.container.hide();
+        sidebarView.container.hide();
+        backAndEditView.container.show();
+        dinnerView.container.show();
     });
 
     this.update = function(obj) {
@@ -27,5 +30,6 @@ var SidebarController = function(sidebarView, dinnerModel) {
     };
 
     this.update();
+    sidebarView.update();
 
 }

@@ -10,7 +10,7 @@ $(function() {
 	var instructionsView = new InstructionsView ($("#instructionsView"), dinnerModel);
 	var dinnerView = new DinnerView($("#dinnerView"), dinnerModel);
 
-	var sidebarController = new SidebarController(sidebarView, dinnerModel);
+	var sidebarController = new SidebarController(sidebarView, dinnerModel, dinnerView, dishDetailsView, backAndEditView);
 	var dishDetailsController = new DishDetailsController(dishDetailsView,selectDishView,dinnerModel);
 	
 	// hide() and show() will later be fixed with controllers
@@ -30,13 +30,13 @@ $(function() {
 
 	// SCREEN 2 - SELECT DISH
 
-	//$("#sidebarView").show();
-	//$("#selectDishView").show();
+	$("#sidebarView").show();
+	$("#selectDishView").show();
 
 	// SCREEN 3 - DISH DETAILS
 
-	$("#sidebarView").show();
-	$("#dishDetailsView").show();
+	//$("#sidebarView").show();
+	//$("#dishDetailsView").show();
 
 	// SCREEN 5 - DINNER OVERVIEW 
 
