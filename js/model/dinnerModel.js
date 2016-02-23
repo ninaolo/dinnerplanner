@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 
 	var numberOfGuests = 8;
-	var menu = {'starter': 1, 'main dish': 100, 'dessert': 201};
+	var menu = {'starter': 1};
 	var observers = [];
 
 	this.addObserver = function(observer) {
@@ -78,11 +78,13 @@ var DinnerModel = function() {
 			delete menu[dish.type];
 		} 
 		menu[dish.type] = dish.id;
+		this.notifyObservers();
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		delete menu[this.getDish(id)];
+		this.notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

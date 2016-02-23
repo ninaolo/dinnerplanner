@@ -8,9 +8,13 @@ function showDishes(dishes, model) {
 		html += "<div class='col-md-6'>";
 		html += dishes[i].name;
 		html += "</div>";
-		html += "<div class='col-md-6'>";
 
+		html += "<div class='col-md-4'>";
 		html += model.getTotalDishPrice(dishes[i].id);
+		html += "</div>";
+
+		html += "<div class='col-md-2'>";
+		html += "<span id='remove-" + dishes[i].id + "' class='glyphicon glyphicon-remove' aria-hidden='true'></span>"
 		html += "</div>";
 
 		html += "</div>";
@@ -31,18 +35,25 @@ var SidebarView = function (container, model) {
 
 	model.addObserver(this);
 
-
 	this.numberOfGuests = container.find("#numberOfGuests");
 	this.plusGuest = container.find("#plusGuest");
 	this.minusGuest = container.find("#minusGuest");
-	container.find("#numberOfGuests").html(model.getNumberOfGuests());
-	var menu = model.getFullMenu();
-	container.find("#dishes").html(showDishes(model.getFullMenu(), model));
+	this.confirmButton = container.find("#confirmDinner");
+	this.dishes = container.find("#dishes");
 
+	this.numberOfGuests.html(model.getNumberOfGuests());
+	var menu = model.getFullMenu();
+	this.dishes.html(showDishes(model.getFullMenu(), model));
 
 
 	this.update = function(obj) {
+		this.dishes.html(showDishes(model.getFullMenu(), model));
 		container.find("#numberOfGuests").html(model.getNumberOfGuests());
+		if (model.getFullMenu().length > 0) {
+			this.confirmButton.show(300);
+		} else {
+			this.confirmButton.hide(300);
+		}
 	}
 	
 }
