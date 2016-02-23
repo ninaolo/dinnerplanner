@@ -12,6 +12,7 @@ $(function() {
 
 	var sidebarController = new SidebarController(sidebarView, dinnerModel, dinnerView, dishDetailsView, backAndEditView);
 	var dishDetailsController = new DishDetailsController(dishDetailsView,selectDishView,dinnerModel);
+	var homeController = new HomeController(homeView,sidebarView,selectDishView);
 	
 	// hide() and show() will later be fixed with controllers
 	$("#homeView").hide();
@@ -26,12 +27,12 @@ $(function() {
 
 	// SCREEN 1 - HOM
 	
-	//$("#homeView").show();
+	$("#homeView").show();
 
 	// SCREEN 2 - SELECT DISH
 
-	$("#sidebarView").show();
-	$("#selectDishView").show();
+	//$("#sidebarView").show();
+	//$("#selectDishView").show();
 
 	// SCREEN 3 - DISH DETAILS
 
