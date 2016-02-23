@@ -4,7 +4,7 @@ function showSearchResults(dishes) {
 
 	for (var i = 0; i < dishes.length; i++) {
 		html += "<div class='col-md-3'>";
-		html += "<div class='image-box'>";
+		html += "<div class='image-box dish'>";
 		html += "<img src='images/" + dishes[i].image + "' />";
 		html += "<div class='desc'><p>" + dishes[i].name + "</p></div>"
 		html += "</div>";
@@ -19,17 +19,36 @@ function showSearchResults(dishes) {
 	return html;
 }
 
+function fillOptions(types) {
+	console.log(types);
+	html=""
+	for (var i = 0; i<types.length; i++){
+		html += "<option>" + types[i] + "</option>";
+	}
+	return html;
+}
+
 //ExampleView Object constructor
 var SelectDishView = function (container, model) {
 
+	model.addObserver(this);
 	this.container = container;
-	var dishType = "Main";
-	this.dishType = container.find("#dishType");
-	this.dishType.html(dishType);
+	this.searchButton = container.find("#searchButton");
+	this.keyValues = container.find("#keyValues");
 
+
+	var types = model.getDishTypes();
+	container.find("#dishTypeSelection").html(fillOptions(types));
+
+	var dishType = container.find("#dishTypeSelection option:selected").text()
 	this.showSearchResults = container.find("#showSearchResults");
-	var dishes = model.getAllDishes("main dish");
+	console.log(dishType);
+
+	var dishes = model.getAllDishes(dishType);
 	this.showSearchResults.html(showSearchResults(dishes));
+	this.images = container.find(".image-box.dish");
+
+	//$(".btn.ship")
 
 
 }

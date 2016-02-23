@@ -15,7 +15,8 @@ $(function() {
 	var homeController = new HomeController(homeView,sidebarView,selectDishView);
 	var dinnerController = new DinnerController(dinnerView, dinnerModel, instructionsView);
 	var backAndEditController = new BackAndEditController(backAndEditView, selectDishView, instructionsView, dinnerView, sidebarView);
-	
+	var selectDishController = new SelectDishController(selectDishView,dishDetailsView, dinnerModel);
+
 	// hide() and show() will later be fixed with controllers
 	$("#homeView").hide();
 	$("#sidebarView").hide();

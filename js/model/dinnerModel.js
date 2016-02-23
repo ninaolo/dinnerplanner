@@ -31,6 +31,18 @@ var DinnerModel = function() {
 		return numberOfGuests;
 	}
 
+	//Returns a list of all types of dishes
+	this.getDishTypes = function() {
+		var types = [];
+		for(var key in dishes) {
+			if( types.indexOf(dishes[key].type) === -1 ){
+				types.push(dishes[key].type);
+			}
+		}
+		return types;
+
+	}
+
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		return menu[type];

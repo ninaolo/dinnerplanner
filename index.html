@@ -79,7 +79,7 @@
 					<h2>Select Dish</h2>
 					<div class="col-md-6">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Enter key words">
+							<input type="text" class="form-control"  id="keyValues" placeholder="Enter key words">
 			<span class="input-group-btn">
 				<button class="btn btn-default" type="button">Search</button>
 			</span>
@@ -88,9 +88,8 @@
 
 					<div class="col-md-6">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default" aria-haspopup="true" aria-expanded="false">
-								<span id="dishType"></span> <span class="caret"></span>
-							</button>
+							<select id="dishTypeSelection">
+							</select>
 						</div>
 					</div>
 
@@ -195,6 +194,7 @@
 		<script src="js/controller/homeController.js"></script>
         <script src="js/controller/dinnerController.js"></script>
         <script src="js/controller/backAndEditController.js"></script>
+		<script src="js/controller/selectDishController.js"></script>
 
 
 	</body>
