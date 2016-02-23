@@ -73,15 +73,16 @@ var DinnerView = function (container, model) {
 	model.addObserver(this);
 	this.container = container;
 
-	var dishes = model.getFullMenu();
 	this.dinnerDishes = this.container.find("#dinnerDishes");
-	dinnerDishes2(dishes, model, this.dinnerDishes);
 	this.printRecipe = this.container.find("#printFullRecipe");
 
-
 	this.update = function(obj) {
-		// update data which was fetched from model
+        var dishes = model.getFullMenu();
+		dinnerDishes2(dishes, model, this.dinnerDishes);
 	}
+
+	this.update();
+
 }
 
 
