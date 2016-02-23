@@ -28,18 +28,18 @@ function showDishes(dishes, model) {
 
 
 var SidebarView = function (container, model) {
-	
+
 	model.addObserver(this);
 
-	container.load("fragments/sidebar.html", function() {
-		container.find("#numberOfGuests").html(model.getNumberOfGuests());
-		var menu = model.getFullMenu();
-		container.find("#dishes").html(showDishes(model.getFullMenu(), model));
 
-		// OBS: detta ska flyttas till controller sen
-		container.find("#plusGuest").click(function() {model.setNumberOfGuests(model.getNumberOfGuests()+1);});
-		container.find("#minusGuest").click(function() {model.setNumberOfGuests(model.getNumberOfGuests()-1);});
-	})
+	this.numberOfGuests = container.find("#numberOfGuests");
+	this.plusGuest = container.find("#plusGuest");
+	this.minusGuest = container.find("#minusGuest");
+	container.find("#numberOfGuests").html(model.getNumberOfGuests());
+	var menu = model.getFullMenu();
+	container.find("#dishes").html(showDishes(model.getFullMenu(), model));
+
+
 
 	this.update = function(obj) {
 		container.find("#numberOfGuests").html(model.getNumberOfGuests());

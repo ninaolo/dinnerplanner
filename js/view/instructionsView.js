@@ -6,11 +6,10 @@ function loadDish(container, dish) {
 
 var InstructionsView = function (container, model) {
 
-	container.load("fragments/instructions.html", function() {
-		this.menu = model.getFullMenu();
-		loadDish(container.find("#starter"), this.menu[0]);
-		loadDish(container.find("#main"), this.menu[1]);
-		loadDish(container.find("#dessert"), this.menu[2]);
-	});
+	this.menu = model.getFullMenu();
+	loadDish(container.find("#starter"), this.menu[0]);
+	loadDish(container.find("#main"), this.menu[1]);
+	loadDish(container.find("#dessert"), this.menu[2]);
+
 	
 }

@@ -1,14 +1,16 @@
 $(function() {
-	//We instantiate our model
-	var model = new DinnerModel();
+
+	var dinnerModel = new DinnerModel();
 	
-	var sidebarView = new SidebarView($("#sidebarView"), model);
-	var selectDishView = new SelectDishView($("#selectDishView"), model);
-	var homeView = new HomeView($("#homeView"), model);
-	var dishDetailsView = new DishDetailsView($("#dishDetailsView"), model);
-	var backAndEditView = new BackAndEditView ($("#backAndEditView"), model);
-	var instructionsView = new InstructionsView ($("#instructionsView"), model);
-	var dinnerView = new DinnerView($("#dinnerView"), model);
+	var sidebarView = new SidebarView($("#sidebarView"), dinnerModel);
+	var selectDishView = new SelectDishView($("#selectDishView"), dinnerModel);
+	var homeView = new HomeView($("#homeView"), dinnerModel);
+	var dishDetailsView = new DishDetailsView($("#dishDetailsView"), dinnerModel);
+	var backAndEditView = new BackAndEditView ($("#backAndEditView"), dinnerModel);
+	var instructionsView = new InstructionsView ($("#instructionsView"), dinnerModel);
+	var dinnerView = new DinnerView($("#dinnerView"), dinnerModel);
+
+	var sidebarController = new SidebarController(sidebarView, dinnerModel);
 	
 	// hide() and show() will later be fixed with controllers
 	$("#homeView").hide();

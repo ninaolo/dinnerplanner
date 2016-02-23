@@ -22,15 +22,13 @@ function showSearchResults(dishes) {
 //ExampleView Object constructor
 var SelectDishView = function (container, model) {
 
-	container.load("fragments/select.html", function() {
-		var dishType = "Main";
-		this.dishType = container.find("#dishType");
-		this.dishType.html(dishType);
+	var dishType = "Main";
+	this.dishType = container.find("#dishType");
+	this.dishType.html(dishType);
 
-		this.showSearchResults = container.find("#showSearchResults");
-		var dishes = model.getAllDishes("main dish");
-		this.showSearchResults.html(showSearchResults(dishes));
-	});
+	this.showSearchResults = container.find("#showSearchResults");
+	var dishes = model.getAllDishes("main dish");
+	this.showSearchResults.html(showSearchResults(dishes));
 
-	
+
 }

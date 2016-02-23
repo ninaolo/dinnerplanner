@@ -72,11 +72,10 @@ var DinnerView = function (container, model) {
 
 	model.addObserver(this);
 
-	container.load("fragments/dinner.html", function() {
-		var dishes = model.getFullMenu();
-		this.dinnerDishes = container.find("#dinnerDishes");
-		dinnerDishes2(dishes, model, this.dinnerDishes);
-	});
+	var dishes = model.getFullMenu();
+	this.dinnerDishes = container.find("#dinnerDishes");
+	dinnerDishes2(dishes, model, this.dinnerDishes);
+
 
 	this.update = function(obj) {
 		// update data which was fetched from model
