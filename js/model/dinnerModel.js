@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 
 	var numberOfGuests = 8;
-	var menu = {'starter': 1};
+	var menu = {'starter': 1, 'main dish': 100, 'dessert': 200};
 	var observers = [];
 
 	this.addObserver = function(observer) {
@@ -16,6 +16,7 @@ var DinnerModel = function() {
 		for (var i = 0; i < observers.length; i++) {
 			observers[i].update(obj);
 		}
+
 	}
 
 	this.setNumberOfGuests = function(num) {
@@ -83,7 +84,7 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		delete menu[this.getDish(id)];
+		delete menu[this.getDish(id).type];
 		this.notifyObservers();
 	}
 

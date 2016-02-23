@@ -32,5 +32,9 @@ var DishDetailsView = function (container, model, selectedDish) {
 	container.find("#nrOfPeople").html(model.getNumberOfGuests());
 	fillIngredientsTable(container, this.dish.ingredients);
 
+	this.update = function() {
+		//skriv kod här
+	}
+
 	
 }

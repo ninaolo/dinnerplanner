@@ -34,6 +34,7 @@ function showDishes(dishes, model) {
 var SidebarView = function (container, model) {
 
 	model.addObserver(this);
+	this.container = container;
 
 	this.numberOfGuests = container.find("#numberOfGuests");
 	this.plusGuest = container.find("#plusGuest");
