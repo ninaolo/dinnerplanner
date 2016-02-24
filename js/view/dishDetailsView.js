@@ -35,7 +35,7 @@ var DishDetailsView = function (container, model) {
         container.find("#total").html(totalCost);
     }
 
-	this.update = function() {
+	this.update = function(obj) {
         this.fillIngredientsTable();
         this.fillDishInfo();
     }

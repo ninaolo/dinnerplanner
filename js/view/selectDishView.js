@@ -2,7 +2,6 @@
 
 var SelectDishView = function (container, model) {
 
-	model.addObserver(this);
 	this.container = container;
 	this.searchButton = container.find("#searchButton");
 	this.keyValues = container.find("#keyValues");
@@ -21,7 +20,11 @@ var SelectDishView = function (container, model) {
             html += "<div class='col-md-3'>";
             html += "<div class='image-box dish' id='" + dishes[i].id + "'>";
             html += "<img src='images/" + dishes[i].image + "' />";
-            html += "<div class='desc'><p>" + dishes[i].name + "</p></div>"
+            var name = dishes[i].name.substring(0,15);
+            if (dishes[i].name.length > 15) {
+                name += "...";
+            }
+            html += "<div class='desc'><p>" + name + "</p></div>"
             html += "</div>";
             if (dishes[i].description.length > 90) {
                 html += "<p>" + dishes[i].description.substr(0,90) + "...</p>";

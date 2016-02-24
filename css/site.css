@@ -194,11 +194,11 @@ h2 {
 	display: inline-block;
 	height: 150px;
 	width: 150px;
-	float: center;
+    color: white;
 }
 
 #dinnerView .image-box .desc {
-	height: 30px; /* 20% of 130px */
+	height: 30px; /* 20% of 150px */
 	background-color: #323232;
 	text-align: center;
 }

@@ -46,13 +46,17 @@ function dinnerDishes2(dishes, model, dinnerDishes) {
 	for (var i = 0; i < dishes.length; i++) {
 
 		html += '<div class="col-md-3" id="dish">';
-			html += '<div class="image-box">';
-				html += '<img src="' + "images/" + dishes[i].image + '">';
-				html += '<div class="desc">';
-					html += '<p id="name">' + dishes[i].name + '</p>';
-				html += '</div>';
-			html += '</div>';
-			html += '<p id="cost">' + model.getTotalDishPrice(dishes[i].id) + ' SEK</p>';
+		html += '<div class="image-box">';
+		html += '<img src="' + "images/" + dishes[i].image + '">';
+		html += '<div class="desc">';
+        var name = dishes[i].name.substring(0,15);
+        if (dishes[i].name.length > 15) {
+            name += "...";
+        }
+		html += '<p id="name">' + name + '</p>';
+		html += '</div>';
+		html += '</div>';
+		html += '<p id="cost">' + model.getTotalDishPrice(dishes[i].id) + ' SEK</p>';
 		html += '</div>';
 
 		totalCost += model.getTotalDishPrice(dishes[i].id);
