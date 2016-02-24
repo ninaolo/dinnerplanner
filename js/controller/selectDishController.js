@@ -6,7 +6,11 @@ var SelectDishController = function(selectDishView,dishDetailsView, dinnerModel)
     });
 
     selectDishView.searchButton.click(function(){
-        selectDishView.chosenType.text();
+        selectDishView.showResults();
+    });
+
+    selectDishView.dishSelect.change(function () {
+        selectDishView.showResults();
     });
 
 }
