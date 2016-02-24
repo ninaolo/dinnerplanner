@@ -7,7 +7,6 @@ var SelectDishView = function (container, model) {
 	this.searchButton = container.find("#searchButton");
 	this.keyValues = container.find("#keyValues");
     this.dishSelect = container.find("#dishTypeSelection");
-    this.images = container.find(".image-box.dish");
     this.showSearchResults = container.find("#showSearchResults");
 
     this.showResults = function() {
@@ -20,7 +19,7 @@ var SelectDishView = function (container, model) {
 
         for (var i = 0; i < dishes.length; i++) {
             html += "<div class='col-md-3'>";
-            html += "<div class='image-box dish'>";
+            html += "<div class='image-box dish' id='" + dishes[i].id + "'>";
             html += "<img src='images/" + dishes[i].image + "' />";
             html += "<div class='desc'><p>" + dishes[i].name + "</p></div>"
             html += "</div>";
@@ -32,6 +31,7 @@ var SelectDishView = function (container, model) {
             html += "</div>";
         }
         html += "</div>";
+
         this.showSearchResults.html(html);
     }
 

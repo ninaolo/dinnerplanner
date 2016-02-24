@@ -5,7 +5,7 @@ $(function() {
 	var sidebarView = new SidebarView($("#sidebarView"), dinnerModel);
 	var selectDishView = new SelectDishView($("#selectDishView"), dinnerModel);
 	var homeView = new HomeView($("#homeView"), dinnerModel);
-	var dishDetailsView = new DishDetailsView($("#dishDetailsView"),dinnerModel,1);
+	var dishDetailsView = new DishDetailsView($("#dishDetailsView"),dinnerModel);
 	var backAndEditView = new BackAndEditView ($("#backAndEditView"), dinnerModel);
 	var instructionsView = new InstructionsView ($("#instructionsView"), dinnerModel);
 	var dinnerView = new DinnerView($("#dinnerView"), dinnerModel);
