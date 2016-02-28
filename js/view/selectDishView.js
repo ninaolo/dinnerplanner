@@ -13,21 +13,22 @@ var SelectDishView = function (container, model) {
     this.showResults = function(dishes) {
 
         html = "<div class='row'>";
-
         for (var i = 0; i < dishes.length; i++) {
             html += "<div class='col-md-3'>";
             html += "<div class='image-box dish' id='" + dishes[i].id + "'>";
             html += "<img src='" + (dishes[i].ImageURL === null ? "" : dishes[i].ImageURL) + "' />";
-            var name = dishes[i].name.substring(0,15);
-            if (dishes[i].name.length > 15) {
+            var name = dishes[i].Title.substring(0,15);
+            if (dishes[i].Title.length > 15) {
                 name += "...";
             }
             html += "<div class='desc'><p>" + name + "</p></div>"
             html += "</div>";
-            if (dishes[i].description.length > 90) {
-                html += "<p>" + dishes[i].description.substr(0,90) + "...</p>";
-            } else {
-                html += "<p>" + dishes[i].description + "</p>"
+            if (dishes[i].Description !== undefined) {
+                if (dishes[i].Description.length > 90) {
+                    html += "<p>" + dishes[i].Description.substr(0,90) + "...</p>";
+                } else {
+                    html += "<p>" + dishes[i].Description + "</p>"
+                }
             }
             html += "</div>";
         }

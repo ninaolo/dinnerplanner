@@ -117,8 +117,7 @@ var DinnerModel = function() {
 			url: url,
 			success: function (data) {
 				alert('success get all dishes');
-				console.log(data);
-				this.notifyObservers("ajax.getAllDishes", data);
+				this.notifyObservers("ajax.getAllDishes", data.Results);
 			}.bind(this),
             error: function () {
                 alert("There was an error loading all dishes.");
