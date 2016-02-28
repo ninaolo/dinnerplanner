@@ -17,7 +17,7 @@ var SelectDishView = function (container, model) {
         for (var i = 0; i < dishes.length; i++) {
             html += "<div class='col-md-3'>";
             html += "<div class='image-box dish' id='" + dishes[i].id + "'>";
-            html += "<img src='images/" + dishes[i].image + "' />";
+            html += "<img src='" + (dishes[i].ImageURL === null ? "" : dishes[i].ImageURL) + "' />";
             var name = dishes[i].name.substring(0,15);
             if (dishes[i].name.length > 15) {
                 name += "...";
@@ -44,8 +44,11 @@ var SelectDishView = function (container, model) {
         return html;
     }
 
-    this.update = function(searchResults) {
-        this.showResults(searchResults);
+    this.update = function(eventName, searchResults) {
+        console.log(eventName);
+        if(eventName === "ajax.getAllDishes") {
+            this.showResults(searchResults);
+        }
     }
 
 	var types = model.getDishTypes();

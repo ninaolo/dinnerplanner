@@ -12,7 +12,7 @@ var DishDetailsView = function (container, model) {
 
     this.fillDishInfo = function(dish) {
         container.find("#dishName").html(dish.name);
-        container.find("#dishPic").attr("src", "images/" + dish.image);
+        container.find("#dishPic").attr("src", (dish.ImageURL === null ? "" : dish.ImageURL));
         container.find("#dishPreparation").html(dish.description);
         container.find("#nrOfPeople").html(model.getNumberOfGuests());
     };
@@ -27,7 +27,8 @@ var DishDetailsView = function (container, model) {
         container.find("#ingredient").html("");
         container.find("#currency").html("");
         container.find("#cost").html("");
-        console.log("INGREDIENTS: " + ingredientList);
+        console.log("INGREDIENTS: ");
+        console.log(dish);
         for (var i = 0; i < ingredientList.length; i++) {
             container.find("#quantity").append("<p>" + ingredientList[i].quantity * guests + " " + ingredientList[i].unit + "</p>");
             container.find("#ingredient").append("<p>" + ingredientList[i].name + "</p>");
@@ -40,9 +41,11 @@ var DishDetailsView = function (container, model) {
         container.find("#total").html(totalCost);
     };
 
-    this.update = function(dish) {
-        this.fillIngredientsTable(dish);
-        this.fillDishInfo(dish);
+    this.update = function(eventName, dish) {
+        if(eventName === "ajax.getDish") {
+            this.fillIngredientsTable(dish);
+            this.fillDishInfo(dish);
+        }
     };
 
 	this.setSelectedDish = function(dish) {

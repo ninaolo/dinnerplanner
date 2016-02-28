@@ -12,9 +12,9 @@ var DinnerModel = function() {
 		observers.push(observer);
 	}
 
-	this.notifyObservers = function(obj) {
+	this.notifyObservers = function(eventName, obj) {
 		for (var i = 0; i < observers.length; i++) {
-			observers[i].update(obj);
+			observers[i].update(eventName, obj);
 		}
 
 	}
@@ -91,13 +91,13 @@ var DinnerModel = function() {
 			delete menu[dish.type];
 		} 
 		menu[dish.type] = dish.id;
-		this.notifyObservers();
+		this.notifyObservers("menu.update");
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		delete menu[this.getDish(id).type];
-		this.notifyObservers();
+		this.notifyObservers("menu.update");
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -105,9 +105,11 @@ var DinnerModel = function() {
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type, filter) {
 		var apiKey = "18f3cT02U9f6yRl3OKDpP8NA537kxYKu";
-		var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
-			+ filter
-			+ "&api_key="+apiKey;
+		var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&api_key=" + apiKey;
+        if (filter !== undefined && filter !== "") {
+            url += "&title_kw=" + filter;
+        }
+        console.log(url);
 		$.ajax({
 			type: "GET",
 			dataType: 'json',
@@ -116,16 +118,19 @@ var DinnerModel = function() {
 			success: function (data) {
 				alert('success get all dishes');
 				console.log(data);
-				this.notifyObservers(data);
+				this.notifyObservers("ajax.getAllDishes", data);
 			}.bind(this),
+            error: function () {
+                alert("There was an error loading all dishes.");
+            }
 		});
 	}
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 		var apiKey = "18f3cT02U9f6yRl3OKDpP8NA537kxYKu";
-		var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&"
-			+ "api_key=" + apiKey;
+		var url = "http://api.bigoven.com/recipe/" + id
+			+ "?api_key=" + apiKey;
 		$.ajax({
 			type: "GET",
 			dataType: 'json',
@@ -133,9 +138,11 @@ var DinnerModel = function() {
 			url: url,
 			success: function (data) {
 				alert('success get dish');
-				console.log(data);
-				this.notifyObservers(data);
+				this.notifyObservers("ajax.getDish", data);
 			}.bind(this),
+            error: function () {
+                alert("There was an error loading dishes with id " + id);
+            }
 		});
 	}
 

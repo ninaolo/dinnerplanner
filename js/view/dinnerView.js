@@ -80,10 +80,11 @@ var DinnerView = function (container, model) {
 	this.dinnerDishes = this.container.find("#dinnerDishes");
 	this.printRecipe = this.container.find("#printFullRecipe");
 
-	this.update = function(obj) {
-        var dishes = model.getFullMenu();
-		console.log(dishes);
-		dinnerDishes2(dishes, model, this.dinnerDishes);
+	this.update = function(eventName, obj) {
+		if (eventName === "menu.update") {
+			var dishes = model.getFullMenu();
+			dinnerDishes2(dishes, model, this.dinnerDishes);
+		}
 	}
 
 	this.update();
