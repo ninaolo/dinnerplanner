@@ -46,6 +46,10 @@ var DishDetailsView = function (container, model) {
             this.fillIngredientsTable(dish);
             this.fillDishInfo(dish);
         }
+        else if(eventName === "errorOccurred"){
+            this.container.find("#dishName").html("Was not able to find details about the dish: "+ dish);
+        }
+
     };
 
 	this.setSelectedDish = function(dish) {

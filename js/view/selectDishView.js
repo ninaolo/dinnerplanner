@@ -46,11 +46,12 @@ var SelectDishView = function (container, model) {
     }
 
     this.update = function(eventName, searchResults) {
-        var spinner = new Spinner().spin();
-        this.showSearchResults.html(spinner.el);
         console.log(eventName);
         if(eventName === "ajax.getAllDishes") {
             this.showResults(searchResults);
+        }
+        else if(eventName === "errorOccurred"){
+            this.showSearchResults.html("Was not able to get a result using the search word: "+searchResults);
         }
     }
 

@@ -1,7 +1,9 @@
 
 var setImageClickEvents = function(selectDishView, dishDetailsView) {
     var images = selectDishView.container.find(".image-box.dish");
+    alert(JSON.stringify(images));
     images.click(function() {
+        alert("found image");
         dishDetailsView.setSelectedDish($(this).attr("id"));
         dishDetailsView.update();
         dishDetailsView.container.show();

@@ -123,7 +123,13 @@ var DinnerModel = function() {
 				this.notifyObservers("ajax.getAllDishes", data.Results);
 			}.bind(this),
             error: function () {
-                alert("There was an error loading all dishes.");
+				if (filter !== undefined && filter !== "") {
+					this.notifyObservers("errorOccurred",type);
+				}
+				else{
+					this.notifyObservers("errorOccurred",filter);
+				}
+                //alert("There was an error loading all dishes.");
             }
 		});
 	}
@@ -143,7 +149,10 @@ var DinnerModel = function() {
 				this.notifyObservers("ajax.getDish", data);
 			}.bind(this),
             error: function () {
-                alert("There was an error loading dishes with id " + id);
+				//TODO - hämta namnet
+				this.notifyObservers("errorOccurred","dish");
+                //alert("There was an error loading dishes with id " + id);
+
             }
 		});
 	}
