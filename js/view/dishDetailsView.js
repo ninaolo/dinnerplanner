@@ -50,5 +50,10 @@ var DishDetailsView = function (container, model) {
 	};
 
     model.getDish(this.selectedDish);
+    var spinner = new Spinner().spin();
+    var spinner2 = new Spinner().spin();
+    this.container.find("#dishName").html(spinner.el);
+    this.container.find("#quantity").html(spinner2.el);
+
 	
 };
