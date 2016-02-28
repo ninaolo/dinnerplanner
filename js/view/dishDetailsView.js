@@ -20,7 +20,7 @@ var DishDetailsView = function (container, model) {
     this.fillIngredientsTable = function(dish) {
 
         var totalCost = 0;
-        var ingredientList = dish.ingredients;
+        var ingredientList = dish.Ingredients;
         var guests = model.getNumberOfGuests();
 
         container.find("#quantity").html("");

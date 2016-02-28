@@ -30,12 +30,12 @@ $(function() {
 
 	// SCREEN 1 - HOM
 	
-	$("#homeView").show();
+	//$("#homeView").show();
 
 	// SCREEN 2 - SELECT DISH
 
-	//$("#sidebarView").show();
-	//$("#selectDishView").show();
+	$("#sidebarView").show();
+	$("#selectDishView").show();
 
 	// SCREEN 3 - DISH DETAILS
 

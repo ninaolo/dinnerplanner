@@ -54,5 +54,7 @@ var SelectDishView = function (container, model) {
     var dishType = container.find("#dishTypeSelection option:selected").text();
     var filter = this.keyValues.val();
     model.getAllDishes(dishType, filter); // AJAX call
+    var spinner = new Spinner().spin();
+    this.showSearchResults.html(spinner.el);
 
 }
