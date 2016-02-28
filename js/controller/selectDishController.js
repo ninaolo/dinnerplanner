@@ -12,12 +12,12 @@ var setImageClickEvents = function(selectDishView, dishDetailsView) {
 var SelectDishController = function(selectDishView,dishDetailsView, dinnerModel) {
 
     selectDishView.searchButton.click(function(){
-        dinnerModel.getAllDishes(); // sends AJAX
+        dinnerModel.getAllDishes(selectDishView.dishSelect.text(),selectDishView.keyValues.val()); // sends AJAX
         setImageClickEvents(selectDishView, dishDetailsView);
     });
 
     selectDishView.dishSelect.change(function () {
-        dinnerModel.getAllDishes(); // sends AJAX
+        dinnerModel.getAllDishes(selectDishView.dishType); // sends AJAX
         setImageClickEvents(selectDishView, dishDetailsView);
     });
 

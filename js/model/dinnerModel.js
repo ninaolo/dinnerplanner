@@ -109,6 +109,9 @@ var DinnerModel = function() {
         if (filter !== undefined && filter !== "") {
             url += "&title_kw=" + filter;
         }
+		else if(filter === undefined && filter === "" && type !== undefined && type !== ""){
+			url+="&any.kw="+type;
+		}
         console.log(url);
 		$.ajax({
 			type: "GET",

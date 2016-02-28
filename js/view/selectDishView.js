@@ -46,6 +46,8 @@ var SelectDishView = function (container, model) {
     }
 
     this.update = function(eventName, searchResults) {
+        var spinner = new Spinner().spin();
+        this.showSearchResults.html(spinner.el);
         console.log(eventName);
         if(eventName === "ajax.getAllDishes") {
             this.showResults(searchResults);
@@ -54,10 +56,9 @@ var SelectDishView = function (container, model) {
 
 	var types = model.getDishTypes();
     this.dishSelect.html(this.fillOptions(types));
-
-    var dishType = container.find("#dishTypeSelection option:selected").text();
+    this.dishType = container.find("#dishTypeSelection option:selected").text();
     var filter = this.keyValues.val();
-    model.getAllDishes(dishType, filter); // AJAX call
+    model.getAllDishes(this.dishType, filter); // AJAX call
     var spinner = new Spinner().spin();
     this.showSearchResults.html(spinner.el);
 
