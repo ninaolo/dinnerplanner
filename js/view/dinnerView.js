@@ -82,6 +82,7 @@ var DinnerView = function (container, model) {
 
 	this.update = function(obj) {
         var dishes = model.getFullMenu();
+		console.log(dishes);
 		dinnerDishes2(dishes, model, this.dinnerDishes);
 	}
 

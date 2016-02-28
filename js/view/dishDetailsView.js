@@ -10,40 +10,45 @@ var DishDetailsView = function (container, model) {
 	this.backSelectDish = container.find("#backSelectDish");
 	this.container = container;
 
-    this.fillDishInfo = function() {
-        var dish = model.getDish(this.selectedDish);
+    this.fillDishInfo = function(dish) {
         container.find("#dishName").html(dish.name);
         container.find("#dishPic").attr("src", "images/" + dish.image);
         container.find("#dishPreparation").html(dish.description);
         container.find("#nrOfPeople").html(model.getNumberOfGuests());
-    }
+    };
 
-    this.fillIngredientsTable = function() {
+    this.fillIngredientsTable = function(dish) {
 
         var totalCost = 0;
-        var ingredientList = model.getDish(this.selectedDish).ingredients;
+        var ingredientList = dish.ingredients;
+        var guests = model.getNumberOfGuests();
 
+        container.find("#quantity").html("");
+        container.find("#ingredient").html("");
+        container.find("#currency").html("");
+        container.find("#cost").html("");
+        console.log("INGREDIENTS: " + ingredientList);
         for (var i = 0; i < ingredientList.length; i++) {
-            container.find("#quantity").append("<p>" + ingredientList[i].quantity + " " + ingredientList[i].unit + "</p>");
+            container.find("#quantity").append("<p>" + ingredientList[i].quantity * guests + " " + ingredientList[i].unit + "</p>");
             container.find("#ingredient").append("<p>" + ingredientList[i].name + "</p>");
             container.find("#currency").append("<p>SEK</p>");
-            container.find("#cost").append("<p>" + ingredientList[i].price + "</p>")
-            totalCost += ingredientList[i].price;
-        };
+            container.find("#cost").append("<p>" + ingredientList[i].price * guests + "</p>");
+            totalCost += ingredientList[i].price * guests;
+        }
 
-        container.find("#totalCurrency").html("<p>SEK</p>")
+        container.find("#totalCurrency").html("<p>SEK</p>");
         container.find("#total").html(totalCost);
-    }
+    };
 
-	this.update = function(obj) {
-        this.fillIngredientsTable();
-        this.fillDishInfo();
-    }
+    this.update = function(dish) {
+        this.fillIngredientsTable(dish);
+        this.fillDishInfo(dish);
+    };
 
 	this.setSelectedDish = function(dish) {
 		this.selectedDish = dish;
-	}
+	};
 
-    this.update();
+    model.getDish(this.selectedDish);
 	
-}
+};

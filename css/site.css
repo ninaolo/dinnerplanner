@@ -54,6 +54,7 @@ h2 {
 
 #homeView {
 	background-color: #1FB18A;
+	height: 500px;
 }
 
 #homeView > #home {

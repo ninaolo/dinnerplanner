@@ -2,17 +2,15 @@
 
 var SelectDishView = function (container, model) {
 
+    model.addObserver(this);
+
 	this.container = container;
 	this.searchButton = container.find("#searchButton");
 	this.keyValues = container.find("#keyValues");
     this.dishSelect = container.find("#dishTypeSelection");
     this.showSearchResults = container.find("#showSearchResults");
 
-    this.showResults = function() {
-
-        var dishType = container.find("#dishTypeSelection option:selected").text();
-        var filter = this.keyValues.val();
-        var dishes = model.getAllDishes(dishType, filter);
+    this.showResults = function(dishes) {
 
         html = "<div class='row'>";
 
@@ -46,9 +44,15 @@ var SelectDishView = function (container, model) {
         return html;
     }
 
+    this.update = function(searchResults) {
+        this.showResults(searchResults);
+    }
+
 	var types = model.getDishTypes();
     this.dishSelect.html(this.fillOptions(types));
 
-	this.showResults();
+    var dishType = container.find("#dishTypeSelection option:selected").text();
+    var filter = this.keyValues.val();
+    model.getAllDishes(dishType, filter); // AJAX call
 
 }

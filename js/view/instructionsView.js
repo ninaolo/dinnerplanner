@@ -1,6 +1,8 @@
 
 var InstructionsView = function (container, model) {
 
+    model.addObserver(this);
+
 	this.container = container;
 
     this.loadDish = function(dish) {
@@ -22,9 +24,14 @@ var InstructionsView = function (container, model) {
         container.append(html);
     }
 
-    this.menu = model.getFullMenu();
+    this.update = function(obj) {
+        this.container.html("");
+        this.menu = model.getFullMenu();
 
-    for(var i = 0; i < this.menu.length; i++) {
-        this.loadDish(this.menu[i]);
+        for(var i = 0; i < this.menu.length; i++) {
+            this.loadDish(this.menu[i]);
+        }
     }
+
+    this.update();
 }
