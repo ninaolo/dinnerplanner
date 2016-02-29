@@ -47,14 +47,21 @@ var SidebarView = function (container, model) {
 	this.dishes.html(showDishes(model.getFullMenu(), model));
 
 
-	this.update = function(obj) {
-		this.dishes.html(showDishes(model.getFullMenu(), model));
-		container.find("#numberOfGuests").html(model.getNumberOfGuests());
-		if (model.getFullMenu().length > 0) {
-			this.confirmButton.show(300);
-		} else {
-			this.confirmButton.hide(300);
+	this.update = function(eventName) {
+		console.log("update");
+		if (eventName === "menu.update") {
+			this.dishes.html(showDishes(model.getFullMenu(), model));
+			if (model.getFullMenu().length > 0) {
+				this.confirmButton.show(300);
+			} else {
+				this.confirmButton.hide(300);
+			}
+		} else if (eventName === "update.NumberOfGuests") {
+			container.find("#numberOfGuests").html(model.getNumberOfGuests());
 		}
+
+
+
 	}
 	
 }

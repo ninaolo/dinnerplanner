@@ -73,7 +73,7 @@ var DinnerModel = function() {
 		var dish = this.getDish(id);
 		var total = 0;
 		for(var i = 0; i < dish.ingredients.length; i++) {
-			total += dish.ingredients[i].price * numberOfGuests;
+			total += numberOfGuests;
 		}
 		return total;
 	};

@@ -49,7 +49,7 @@ var SelectDishView = function (container, model) {
         if(eventName === "ajax.getAllDishes" && searchResults !== undefined) {
             this.showResults(searchResults);
         }
-        else if(eventName === "errorOccurred" || searchResults === undefined) {
+        else if(eventName === "errorOccurred") {
             this.showSearchResults.html("Could not load results.");
         }
     }
