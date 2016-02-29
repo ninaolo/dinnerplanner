@@ -1,11 +1,13 @@
 
-var setImageClickEvents = function(selectDishView, dishDetailsView) {
+var setImageClickEvents = function(selectDishView, dishDetailsView, dinnerModel) {
     var images = selectDishView.container.find(".image-box.dish");
-    alert(JSON.stringify(images));
     images.click(function() {
-        alert("found image");
         dishDetailsView.setSelectedDish($(this).attr("id"));
-        dishDetailsView.update();
+        dinnerModel.getDish($(this).attr("id")); // sends AJAX
+        var spinner = new Spinner().spin();
+        var spinner2 = new Spinner().spin();
+        dishDetailsView.container.find("#dishName").html(spinner.el);
+        dishDetailsView.container.find("#quantity").html(spinner2.el);
         dishDetailsView.container.show();
         selectDishView.container.hide();
     });
@@ -13,17 +15,23 @@ var setImageClickEvents = function(selectDishView, dishDetailsView) {
 
 var SelectDishController = function(selectDishView,dishDetailsView, dinnerModel) {
 
+    dinnerModel.addObserver(this);
+
     selectDishView.searchButton.click(function(){
         dinnerModel.getAllDishes(selectDishView.dishSelect.text(),selectDishView.keyValues.val()); // sends AJAX
-        setImageClickEvents(selectDishView, dishDetailsView);
     });
 
     selectDishView.dishSelect.change(function () {
         dinnerModel.getAllDishes(selectDishView.dishType); // sends AJAX
-        setImageClickEvents(selectDishView, dishDetailsView);
     });
 
     setImageClickEvents(selectDishView, dishDetailsView);
+
+    this.update = function(eventName, data) {
+        if (eventName === "ajax.getAllDishes") {
+            setImageClickEvents(selectDishView, dishDetailsView, dinnerModel); // must be done AFTER ajax is done to get all images
+        }
+    }
 
 };
 

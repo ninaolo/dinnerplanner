@@ -112,14 +112,12 @@ var DinnerModel = function() {
 		else if(filter === undefined && filter === "" && type !== undefined && type !== ""){
 			url+="&any.kw="+type;
 		}
-        console.log(url);
 		$.ajax({
 			type: "GET",
 			dataType: 'json',
 			cache: false,
 			url: url,
 			success: function (data) {
-				alert('success get all dishes');
 				this.notifyObservers("ajax.getAllDishes", data.Results);
 			}.bind(this),
             error: function () {
@@ -145,7 +143,6 @@ var DinnerModel = function() {
 			cache: false,
 			url: url,
 			success: function (data) {
-				alert('success get dish');
 				this.notifyObservers("ajax.getDish", data);
 			}.bind(this),
             error: function () {

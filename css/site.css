@@ -155,6 +155,14 @@ h2 {
 	padding: 10px 40px 30px 40px;
 }
 
+#ingredientsTable p {
+    font-size: 11px;
+}
+
+#ingredientsTable td {
+    padding: 0px 10px 10px 10px;
+    vertical-align: text-top;
+}
 
 /* BACK AND EDIT VIEW */
 

@@ -15,7 +15,7 @@ var SelectDishView = function (container, model) {
         html = "<div class='row'>";
         for (var i = 0; i < dishes.length; i++) {
             html += "<div class='col-md-3'>";
-            html += "<div class='image-box dish' id='" + dishes[i].id + "'>";
+            html += "<div class='image-box dish' id='" + dishes[i].RecipeID + "'>";
             html += "<img src='" + (dishes[i].ImageURL === null ? "" : dishes[i].ImageURL) + "' />";
             var name = dishes[i].Title.substring(0,15);
             if (dishes[i].Title.length > 15) {
@@ -46,7 +46,6 @@ var SelectDishView = function (container, model) {
     }
 
     this.update = function(eventName, searchResults) {
-        console.log(eventName);
         if(eventName === "ajax.getAllDishes") {
             this.showResults(searchResults);
         }
