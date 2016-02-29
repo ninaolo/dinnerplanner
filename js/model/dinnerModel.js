@@ -146,10 +146,7 @@ var DinnerModel = function() {
 				this.notifyObservers("ajax.getDish", data);
 			}.bind(this),
             error: function () {
-				//TODO - hämta namnet
-				this.notifyObservers("errorOccurred","dish");
-                //alert("There was an error loading dishes with id " + id);
-
+				this.notifyObservers("errorOccurred");
             }
 		});
 	}

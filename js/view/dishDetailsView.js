@@ -45,8 +45,8 @@ var DishDetailsView = function (container, model) {
         if(eventName === ("ajax.getDish" || "update.numberOfPeople")) {
             this.fillIngredientsTable(dish);
             this.fillDishInfo(dish);
-        } else if(eventName === "errorOccurred"){
-            this.container.find("#dishName").html("Was not able to find details about the dish: "+ dish);
+        } else if(eventName === "errorOccurred" || dish === undefined) {
+            this.container.find("#dishName").html("Could not load dish");
         }
 
     };
