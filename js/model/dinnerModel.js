@@ -106,12 +106,14 @@ var DinnerModel = function() {
 	this.getAllDishes = function (type, filter) {
 		var apiKey = "18f3cT02U9f6yRl3OKDpP8NA537kxYKu";
 		var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&api_key=" + apiKey;
+
         if (filter !== undefined && filter !== "") {
             url += "&title_kw=" + filter;
         }
-		else if(filter === undefined && filter === "" && type !== undefined && type !== ""){
-			url+="&any.kw="+type;
+		if(type !== undefined && type !== ""){
+			url+="&any_kw=" + type;
 		}
+        console.log(url);
 		$.ajax({
 			type: "GET",
 			dataType: 'json',
