@@ -34,7 +34,7 @@ var DishDetailsView = function (container, model) {
             ingredientsTable.append("<td>SEK</td>");
             ingredientsTable.append("<td>" + guests + "</td>");
             ingredientsTable.append("</tr>");
-            totalCost += ingredientList[i].price * guests;
+            totalCost = ingredientList.length * guests;
         }
 
         container.find("#totalCurrency").html("<p>SEK</p>");
@@ -42,10 +42,14 @@ var DishDetailsView = function (container, model) {
     };
 
     this.update = function(eventName, dish) {
-        if(eventName === ("ajax.getDish" || "update.numberOfPeople")) {
+        if(eventName === "ajax.getDish") {
+            this.setSelectedDish(dish);
             this.fillIngredientsTable(dish);
             this.fillDishInfo(dish);
-        } else if(eventName === "errorOccurred" || dish === undefined) {
+        } else if(eventName === "update.numberOfGuests"){
+            this.fillIngredientsTable(this.selectedDish);
+            this.fillDishInfo(this.selectedDish);
+        }else if(eventName === "errorOccurred" || dish === undefined) {
             this.container.find("#dishName").html("Could not load dish");
         }
 
