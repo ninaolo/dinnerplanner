@@ -42,18 +42,19 @@ var DishDetailsView = function (container, model) {
     };
 
     this.update = function(eventName, dish) {
-        if(eventName === ("ajax.getDish" || "update.numberOfPeople")) {
+        if(eventName === ("update.numberOfPeople")) {
             this.fillIngredientsTable(dish);
-            this.fillDishInfo(dish);
         } else if(eventName === "errorOccurred" || dish === undefined) {
             this.container.find("#dishName").html("Could not load dish");
         }
-
     };
 
 	this.setSelectedDish = function(dish) {
 		this.selectedDish = dish;
 	};
 
-	
+    this.updateWholeView = function(dish) {
+        this.fillIngredientsTable(dish);
+        this.fillDishInfo(dish);
+    };
 };

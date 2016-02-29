@@ -17,7 +17,6 @@ $(function() {
 	var backAndEditController = new BackAndEditController(backAndEditView, selectDishView, instructionsView, dinnerView, sidebarView);
 	var selectDishController = new SelectDishController(selectDishView,dishDetailsView, dinnerModel);
 
-	// hide() and show() will later be fixed with controllers
 	$("#homeView").hide();
 	$("#sidebarView").hide();
 	$("#selectDishView").hide();
@@ -25,8 +24,6 @@ $(function() {
 	$("#backAndEditView").hide();
 	$("#instructionsView").hide();
 	$("#dinnerView").hide();
-
-
 
 	// SCREEN 1 - HOM
 	

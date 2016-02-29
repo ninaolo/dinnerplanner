@@ -66,7 +66,7 @@ var DinnerModel = function() {
 			totalMenuPrice += this.getTotalDishPrice(menu[key]);
 		}
 		return totalMenuPrice;
-	}
+	};
 
 	//Returns the total price for a specific dish in the menu (all ingredients multiplied by the number of guests)
 	this.getTotalDishPrice = function(id) {
@@ -76,24 +76,29 @@ var DinnerModel = function() {
 			total += dish.ingredients[i].price * numberOfGuests;
 		}
 		return total;
-	}
+	};
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		var dish = this.getDish(id);
-		if(dish.type in menu){
-			delete menu[dish.type];
-		} 
-		menu[dish.type] = dish.id;
-		this.notifyObservers("menu.update");
-	}
+		this.getDish(id, function(dish) { // Callback function which runs when ajax is complete
+            if(dish.Category in menu){
+                delete menu[dish.Category];
+            }
+            menu[dish.Category] = dish.RecipeID;
+            console.log("MENU");
+            console.log(menu);
+            this.notifyObservers("menu.update");
+
+        });
+
+	};
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		delete menu[this.getDish(id).type];
 		this.notifyObservers("menu.update");
-	}
+	};
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
@@ -129,7 +134,7 @@ var DinnerModel = function() {
 	}
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
+	this.getDish = function (id, callbackFunction) {
 		var apiKey = "18f3cT02U9f6yRl3OKDpP8NA537kxYKu";
 		var url = "http://api.bigoven.com/recipe/" + id
 			+ "?api_key=" + apiKey;
@@ -138,8 +143,9 @@ var DinnerModel = function() {
 			dataType: 'json',
 			cache: false,
 			url: url,
-			success: function (data) {
-				this.notifyObservers("ajax.getDish", data);
+			success: function (dish) {
+				//this.notifyObservers("ajax.getDish", data);
+                callbackFunction(dish); // Run the callback function
 			}.bind(this),
             error: function () {
 				this.notifyObservers("errorOccurred");

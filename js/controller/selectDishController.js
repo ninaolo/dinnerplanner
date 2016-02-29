@@ -3,7 +3,8 @@ var setImageClickEvents = function(selectDishView, dishDetailsView, dinnerModel)
     var images = selectDishView.container.find(".image-box.dish");
     images.click(function() {
         dishDetailsView.setSelectedDish($(this).attr("id"));
-        dinnerModel.getDish($(this).attr("id")); // sends AJAX
+        // AJAX with callback function
+        dinnerModel.getDish($(this).attr("id"), dishDetailsView.updateWholeView.bind(dishDetailsView));
         var spinner = new Spinner().spin();
         var spinner2 = new Spinner().spin();
         dishDetailsView.container.find("#dishName").html(spinner.el);
@@ -11,7 +12,7 @@ var setImageClickEvents = function(selectDishView, dishDetailsView, dinnerModel)
         dishDetailsView.container.show();
         selectDishView.container.hide();
     });
-}
+};
 
 var SelectDishController = function(selectDishView,dishDetailsView, dinnerModel) {
 
