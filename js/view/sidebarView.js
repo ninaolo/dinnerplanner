@@ -6,15 +6,15 @@ function showDishes(dishes, model) {
 		html += "<div class='row'>";
 
 		html += "<div class='col-md-6'>";
-		html += dishes[i].name;
+		html += dishes[i].Title;
 		html += "</div>";
 
 		html += "<div class='col-md-4'>";
-		html += model.getTotalDishPrice(dishes[i].id);
+		html += model.getTotalDishPrice(dishes[i].RecipeID);
 		html += "</div>";
 
 		html += "<div class='col-md-2'>";
-		html += "<span id='remove-" + dishes[i].id + "' class='glyphicon glyphicon-remove' aria-hidden='true'></span>"
+		html += "<span id='remove-" + dishes[i].RecipeID + "' class='glyphicon glyphicon-remove' aria-hidden='true'></span>"
 		html += "</div>";
 
 		html += "</div>";
@@ -48,10 +48,9 @@ var SidebarView = function (container, model) {
 
 
 	this.update = function(eventName) {
-		console.log("update");
 		if (eventName === "menu.update") {
 			this.dishes.html(showDishes(model.getFullMenu(), model));
-			if (model.getFullMenu().length > 0) {
+			if (model.getMenu().length > 0) {
 				this.confirmButton.show(300);
 			} else {
 				this.confirmButton.hide(300);

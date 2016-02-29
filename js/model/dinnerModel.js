@@ -47,10 +47,16 @@ var DinnerModel = function() {
 	this.getFullMenu = function() {
 		var fullMenu = [];
 		for (var key in menu) {
-			fullMenu.push(this.getDish(menu[key]));
+            this.getDish(menu[key], function(dish) {
+                fullMenu.push(dish);
+            });
 		}
 		return fullMenu;
-	}
+	};
+
+    this.getMenu = function() {
+        return menu;
+    }
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
@@ -70,28 +76,27 @@ var DinnerModel = function() {
 
 	//Returns the total price for a specific dish in the menu (all ingredients multiplied by the number of guests)
 	this.getTotalDishPrice = function(id) {
-		var dish = this.getDish(id);
-		var total = 0;
-		for(var i = 0; i < dish.ingredients.length; i++) {
-			total += numberOfGuests;
-		}
-		return total;
+		this.getDish(id, function(dish) {
+            var total = 0;
+            for(var i = 0; i < dish.Ingredients.length; i++) {
+                total += numberOfGuests;
+            }
+            return total;
+        });
+
 	};
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		this.getDish(id, function(dish) { // Callback function which runs when ajax is complete
+            console.log(id);
             if(dish.Category in menu){
                 delete menu[dish.Category];
             }
             menu[dish.Category] = dish.RecipeID;
-            console.log("MENU");
-            console.log(menu);
             this.notifyObservers("menu.update");
-
-        });
-
+        }.bind(this));
 	};
 
 	//Removes dish from menu
