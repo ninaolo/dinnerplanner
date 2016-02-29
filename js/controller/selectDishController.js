@@ -22,6 +22,7 @@ var SelectDishController = function(selectDishView,dishDetailsView, dinnerModel)
     });
 
     selectDishView.dishSelect.change(function () {
+        selectDishView.dishType = selectDishView.container.find("#dishTypeSelection option:selected").text();
         dinnerModel.getAllDishes(selectDishView.dishType); // sends AJAX
     });
 

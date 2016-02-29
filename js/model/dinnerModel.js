@@ -33,12 +33,7 @@ var DinnerModel = function() {
 
 	//Returns a list of all types of dishes
 	this.getDishTypes = function() {
-		var types = ["starter", "main dish", "dessert"];
-		/*for(var key in dishes) {
-			if( types.indexOf(dishes[key].type) === -1 ){
-				types.push(dishes[key].type);
-			}
-		}*/
+		var types = ["Starter", "Main Dish", "Dessert"];
 		return types;
 
 	}
@@ -129,7 +124,6 @@ var DinnerModel = function() {
 				else{
 					this.notifyObservers("errorOccurred",filter);
 				}
-                //alert("There was an error loading all dishes.");
             }
 		});
 	}

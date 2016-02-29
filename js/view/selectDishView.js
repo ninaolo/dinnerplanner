@@ -46,7 +46,6 @@ var SelectDishView = function (container, model) {
     }
 
     this.update = function(eventName, searchResults) {
-        console.log(searchResults);
         if(eventName === "ajax.getAllDishes" && searchResults !== undefined) {
             this.showResults(searchResults);
         }
