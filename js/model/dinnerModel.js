@@ -22,7 +22,7 @@ var DinnerModel = function() {
 	this.setNumberOfGuests = function(num) {
 		if (num > 0) {
 			numberOfGuests = num;
-			this.notifyObservers();
+			this.notifyObservers("update.numberOfGuests");
 		}
 	}
 

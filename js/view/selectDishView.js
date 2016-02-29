@@ -46,11 +46,12 @@ var SelectDishView = function (container, model) {
     }
 
     this.update = function(eventName, searchResults) {
-        if(eventName === "ajax.getAllDishes") {
+        console.log(searchResults);
+        if(eventName === "ajax.getAllDishes" && searchResults !== undefined) {
             this.showResults(searchResults);
         }
-        else if(eventName === "errorOccurred"){
-            this.showSearchResults.html("Was not able to get a result using the search word: "+searchResults);
+        else if(eventName === "errorOccurred" || searchResults === undefined) {
+            this.showSearchResults.html("Could not load results.");
         }
     }
 

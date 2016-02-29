@@ -42,11 +42,10 @@ var DishDetailsView = function (container, model) {
     };
 
     this.update = function(eventName, dish) {
-        if(eventName === "ajax.getDish") {
+        if(eventName === ("ajax.getDish" || "update.numberOfPeople")) {
             this.fillIngredientsTable(dish);
             this.fillDishInfo(dish);
-        }
-        else if(eventName === "errorOccurred"){
+        } else if(eventName === "errorOccurred"){
             this.container.find("#dishName").html("Was not able to find details about the dish: "+ dish);
         }
 
