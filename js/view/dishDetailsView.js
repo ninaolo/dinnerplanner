@@ -4,7 +4,7 @@ var DishDetailsView = function (container, model) {
 
 	model.addObserver(this);
 
-    this.selectedDish = 1;
+    this.selectedDish = null;
 
 	this.confirmDish = container.find("#confirmDish");
 	this.backSelectDish = container.find("#backSelectDish");
@@ -34,7 +34,7 @@ var DishDetailsView = function (container, model) {
             ingredientsTable.append("<td>SEK</td>");
             ingredientsTable.append("<td>" + guests + "</td>");
             ingredientsTable.append("</tr>");
-            totalCost += ingredientList[i].price * guests;
+            totalCost = ingredientList.length * guests;
         }
 
         container.find("#totalCurrency").html("<p>SEK</p>");
@@ -42,9 +42,9 @@ var DishDetailsView = function (container, model) {
     };
 
     this.update = function(eventName, dish) {
-        if(eventName === ("update.numberOfPeople")) {
-            this.fillIngredientsTable(dish);
-        } else if(eventName === "errorOccurred" || dish === undefined) {
+        if(eventName === "update.numberOfGuests") {
+            this.updateWholeView(this.selectedDish);
+        } else if(eventName === "errorOccurred") {
             this.container.find("#dishName").html("Could not load dish");
         }
     };
@@ -54,6 +54,7 @@ var DishDetailsView = function (container, model) {
 	};
 
     this.updateWholeView = function(dish) {
+        this.selectedDish = dish;
         this.fillIngredientsTable(dish);
         this.fillDishInfo(dish);
     };
