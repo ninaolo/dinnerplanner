@@ -101,9 +101,12 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		delete menu[this.getDish(id).type];
-		this.notifyObservers("menu.update");
+		this.getDish(id, function(dish) { // Callback function which runs when ajax is complete
+			delete menu[dish.Category];
+			this.notifyObservers("menu.update");
+		}.bind(this));
 	};
+
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)

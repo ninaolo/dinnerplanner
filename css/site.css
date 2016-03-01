@@ -235,3 +235,12 @@ h2 {
 	padding-top: 50px;
 }
 
+#instructionsView img{
+	border: 1px solid #DFDFDF;
+	margin: 10px;
+	display: inline-block;
+	height: 150px;
+	width: 150px;
+	color: white;
+
+}
