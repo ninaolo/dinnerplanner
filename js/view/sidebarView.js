@@ -49,13 +49,14 @@ var SidebarView = function (container, model) {
 
 	this.update = function(eventName) {
 		if (eventName === "menu.update") {
+            console.log(model.getFullMenu());
 			this.dishes.html(showDishes(model.getFullMenu(), model));
 			if (model.getMenu().length > 0) {
 				this.confirmButton.show(300);
 			} else {
 				this.confirmButton.hide(300);
 			}
-		} else if (eventName === "update.NumberOfGuests") {
+		} else if (eventName === "update.numberOfGuests") {
 			container.find("#numberOfGuests").html(model.getNumberOfGuests());
 		}
 

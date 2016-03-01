@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 
 	var numberOfGuests = 8;
-	var menu = {};
+	var menu = [];
 	var observers = [];
 
 	this.addObserver = function(observer) {
@@ -36,34 +36,28 @@ var DinnerModel = function() {
 		var types = ["Starter", "Main Dish", "Dessert"];
 		return types;
 
-	}
+	};
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		return menu[type];
-	}
+	};
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		var fullMenu = [];
-		for (var key in menu) {
-            this.getDish(menu[key], function(dish) {
-                fullMenu.push(dish);
-            });
-		}
-		return fullMenu;
+        var fullMenu = [];
+        for (var key in menu) {
+            fullMenu.push(menu[key]);
+        }
+        return fullMenu;
 	};
-
-    this.getMenu = function() {
-        return menu;
-    }
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		for (var key in menu) {
 			var dish = this.getDish(menu[key]);
 		}
-	}
+	};
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
@@ -90,11 +84,10 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		this.getDish(id, function(dish) { // Callback function which runs when ajax is complete
-            console.log(id);
             if(dish.Category in menu){
                 delete menu[dish.Category];
             }
-            menu[dish.Category] = dish.RecipeID;
+            menu[dish.Category] = dish;
             this.notifyObservers("menu.update");
         }.bind(this));
 	};
