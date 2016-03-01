@@ -19,7 +19,7 @@ var SelectDishController = function(selectDishView,dishDetailsView, dinnerModel)
     dinnerModel.addObserver(this);
 
     selectDishView.searchButton.click(function(){
-        dinnerModel.getAllDishes(selectDishView.dishSelect.text(),selectDishView.keyValues.val()); // sends AJAX
+        dinnerModel.getAllDishes(selectDishView.dishType,selectDishView.keyValues.val()); // sends AJAX
     });
 
     selectDishView.dishSelect.change(function () {

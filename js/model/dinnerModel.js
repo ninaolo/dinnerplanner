@@ -52,12 +52,6 @@ var DinnerModel = function() {
         return fullMenu;
 	};
 
-	//Returns all ingredients for all the dishes on the menu.
-	this.getAllIngredients = function() {
-		for (var key in menu) {
-			var dish = this.getDish(menu[key].RecipeID);
-		}
-	};
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
@@ -115,11 +109,11 @@ var DinnerModel = function() {
 		var apiKey = "18f3cT02U9f6yRl3OKDpP8NA537kxYKu";
 		var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&api_key=" + apiKey;
 
-        if (filter !== undefined && filter !== "") {
-            url += "&title_kw=" + filter;
+        if (type !== undefined && type !== "") {
+            url += "&title_kw=" + type;
         }
-		if(type !== undefined && type !== ""){
-			url+="&any_kw=" + type;
+		if(filter !== undefined && filter!== ""){
+			url+=" " + filter;
 		}
         console.log(url);
 		$.ajax({
