@@ -83,12 +83,12 @@ var DinnerModel = function() {
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
-	this.addDishToMenu = function(id) {
+	this.addDishToMenu = function(id,type) {
 		this.getDish(id, function(dish) { // Callback function which runs when ajax is complete
-            if(dish.Category in menu){
-                delete menu[dish.Category];
+            if(type in menu){
+                delete menu[type];
             }
-            menu[dish.Category] = dish;
+            menu[type] = dish;
             this.notifyObservers("menu.update");
         }.bind(this));
 	};
