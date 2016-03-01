@@ -58,6 +58,7 @@ var SidebarView = function (container, model) {
 			}
 		} else if (eventName === "update.numberOfGuests") {
 			container.find("#numberOfGuests").html(model.getNumberOfGuests());
+			this.dishes.html(showDishes(model.getFullMenu(), model));
 		}
 
 
