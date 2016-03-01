@@ -95,10 +95,12 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		this.getDish(id, function(dish) { // Callback function which runs when ajax is complete
-			delete menu[dish.Category];
-			this.notifyObservers("menu.update");
-		}.bind(this));
+		for (var key in menu) {
+            if (menu[key].RecipeID == id) {
+                delete menu[key];
+            }
+        }
+        this.notifyObservers("menu.update");
 	};
 
 
