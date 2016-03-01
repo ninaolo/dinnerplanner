@@ -1,44 +1,6 @@
 
-function dinnerDishes(dishes, model){
 
-	var totalCost = 0;
-
-	for (var i = 0; i < dishes.length; i++) {
-		var dishDiv = document.createElement('div');
-		dishDiv.className ="col-md-3";
-		dishDiv.id="dish";
-
-		var div = document.createElement('div');
-		div.className ="image-box";
-
-		var img = document.createElement('img');
-		img.src="images/"+dishes[i].image;
-
-		var nameDiv = document.createElement('div');
-		nameDiv.className ="desc";
-		var name = document.createElement('p');
-		name.innerHTML= dishes[i].name;
-
-		var cost = document.createElement('p');
-		cost.id="cost";
-		cost.className="row";
-		cost.innerHTML= model.getTotalDishPrice(dishes[i].id) +" SEK";
-		totalCost += model.getTotalDishPrice(dishes[i].id);
-
-		nameDiv.appendChild(name);
-		div.appendChild(img);
-		div.appendChild(nameDiv);
-		dishDiv.appendChild(div);
-
-		dishDiv.appendChild(cost);
-
-		document.getElementById('dinnerDishes').appendChild(dishDiv);
-
-	}
-	return totalCost;
-}
-
-function dinnerDishes2(dishes, model, dinnerDishes) {
+function dinnerDishes(dishes, model, dinnerDishes) {
 
 	var totalCost = 0;
 	var html = "";
@@ -47,19 +9,19 @@ function dinnerDishes2(dishes, model, dinnerDishes) {
 
 		html += '<div class="col-md-3" id="dish">';
 		html += '<div class="image-box">';
-		html += '<img src="' + "images/" + dishes[i].image + '">';
+		html += "<img src='" + (dishes[i].ImageURL === null ? "" : dishes[i].ImageURL) + "' />";
 		html += '<div class="desc">';
-        var name = dishes[i].name.substring(0,15);
-        if (dishes[i].name.length > 15) {
+        var name = dishes[i].Title.substring(0,15);
+        if (dishes[i].Title.length > 15) {
             name += "...";
         }
 		html += '<p id="name">' + name + '</p>';
 		html += '</div>';
 		html += '</div>';
-		html += '<p id="cost">' + model.getTotalDishPrice(dishes[i].id) + ' SEK</p>';
+		html += '<p id="cost">' + model.getTotalDishPrice(dishes[i].RecipeID) + ' SEK</p>';
 		html += '</div>';
 
-		totalCost += model.getTotalDishPrice(dishes[i].id);
+		totalCost += model.getTotalDishPrice(dishes[i].RecipeID);
 	}
 
 	html += '<div id="totalCost" class="col-md-3">';
@@ -83,7 +45,7 @@ var DinnerView = function (container, model) {
 	this.update = function(eventName, obj) {
 		if (eventName === "menu.update") {
 			var dishes = model.getFullMenu();
-			dinnerDishes2(dishes, model, this.dinnerDishes);
+			dinnerDishes(dishes, model, this.dinnerDishes);
 		}
 	}
 

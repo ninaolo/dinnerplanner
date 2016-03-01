@@ -51,7 +51,7 @@ var SidebarView = function (container, model) {
 		if (eventName === "menu.update") {
             console.log(model.getFullMenu());
 			this.dishes.html(showDishes(model.getFullMenu(), model));
-			if (model.getMenu().length > 0) {
+			if (model.getFullMenu().length > 0) {
 				this.confirmButton.show(300);
 			} else {
 				this.confirmButton.hide(300);
