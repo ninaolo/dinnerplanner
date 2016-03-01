@@ -5,31 +5,31 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 
 	var numberOfGuests = 8;
-	var menu = [];
+	var menu = {};
 	var observers = [];
 
 	this.addObserver = function(observer) {
 		observers.push(observer);
-	}
+	};
 
 	this.notifyObservers = function(eventName, obj) {
 		for (var i = 0; i < observers.length; i++) {
 			observers[i].update(eventName, obj);
 		}
 
-	}
+	};
 
 	this.setNumberOfGuests = function(num) {
 		if (num > 0) {
 			numberOfGuests = num;
 			this.notifyObservers("update.numberOfGuests");
 		}
-	}
+	};
 
 	// should return 
 	this.getNumberOfGuests = function() {
 		return numberOfGuests;
-	}
+	};
 
 	//Returns a list of all types of dishes
 	this.getDishTypes = function() {
@@ -55,7 +55,7 @@ var DinnerModel = function() {
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		for (var key in menu) {
-			var dish = this.getDish(menu[key]);
+			var dish = this.getDish(menu[key].RecipeID);
 		}
 	};
 
@@ -63,21 +63,28 @@ var DinnerModel = function() {
 	this.getTotalMenuPrice = function() {
 		var totalMenuPrice = 0;
 		for(var key in menu){
-			totalMenuPrice += this.getTotalDishPrice(menu[key]);
+			totalMenuPrice += this.getTotalDishPrice(menu[key].RecipeID);
 		}
 		return totalMenuPrice;
 	};
 
+    // Helper method
+    this.getMenuDishById = function(id) {
+        for(var key in menu) {
+            if (menu[key].RecipeID === id) {
+                return menu[key];
+            }
+        }
+    };
+
 	//Returns the total price for a specific dish in the menu (all ingredients multiplied by the number of guests)
 	this.getTotalDishPrice = function(id) {
-		this.getDish(id, function(dish) {
-            var total = 0;
-            for(var i = 0; i < dish.Ingredients.length; i++) {
-                total += numberOfGuests;
-            }
-            return total;
-        });
-
+        var dish = this.getMenuDishById(id);
+        var total = 0;
+        for(var i = 0; i < dish.Ingredients.length; i++) {
+            total += numberOfGuests * dish.Ingredients[i].Quantity;
+        }
+        return total;
 	};
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
