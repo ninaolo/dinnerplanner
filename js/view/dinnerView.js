@@ -43,7 +43,7 @@ var DinnerView = function (container, model) {
 	this.printRecipe = this.container.find("#printFullRecipe");
 
 	this.update = function(eventName, obj) {
-		if (eventName === "menu.update") {
+		if (eventName === "menu.update" || eventName === "update.numberOfGuests") {
 			var dishes = model.getFullMenu();
 			dinnerDishes(dishes, model, this.dinnerDishes);
 		}
