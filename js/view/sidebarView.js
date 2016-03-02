@@ -10,7 +10,7 @@ function showDishes(dishes, model) {
 		html += "</div>";
 
 		html += "<div class='col-md-4'>";
-		html += model.getTotalDishPrice(dishes[i].RecipeID);
+		html += Math.round(model.getTotalDishPrice(dishes[i].RecipeID));
 		html += "</div>";
 
 		html += "<div class='col-md-2'>";
@@ -23,7 +23,7 @@ function showDishes(dishes, model) {
 	html += "<hr>";
 	html += "<div class='row'>";
 	html += "<div class='col-md-6 col-md-offset-6'>";
-	html += "SEK " + model.getTotalMenuPrice();
+	html += "SEK " + Math.round(model.getTotalMenuPrice());
 	html += "</div>";
 	html += "</div>";
 
@@ -49,7 +49,6 @@ var SidebarView = function (container, model) {
 
 	this.update = function(eventName) {
 		if (eventName === "menu.update") {
-            console.log(model.getFullMenu());
 			this.dishes.html(showDishes(model.getFullMenu(), model));
 			if (model.getFullMenu().length > 0) {
 				this.confirmButton.show(300);

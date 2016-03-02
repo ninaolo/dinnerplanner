@@ -10,7 +10,7 @@ var InstructionsView = function (container, model) {
         html = "";
         html += '<div class="row">';
         html += '<div class="col-md-3">';
-        html += "<img src='" + (dish.ImageURL === null ? "" : dish.ImageURL) + "' />";
+        html += "<img src='" + (dish.ImageURL === null ? "http://redirect.bigoven.com/pics/recipe-no-image.jpg" : dish.ImageURL) + "' />";
         html += '</div>';
         html += '<div class="col-md-4">';
         html += '<h1>' + dish.Title + '</h1>';

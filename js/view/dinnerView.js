@@ -9,7 +9,7 @@ function dinnerDishes(dishes, model, dinnerDishes) {
 
 		html += '<div class="col-md-3" id="dish">';
 		html += '<div class="image-box">';
-		html += "<img src='" + (dishes[i].ImageURL === null ? "" : dishes[i].ImageURL) + "' />";
+		html += "<img src='" + (dishes[i].ImageURL === null ? "http://redirect.bigoven.com/pics/recipe-no-image.jpg" : dishes[i].ImageURL) + "' />";
 		html += '<div class="desc">';
         var name = dishes[i].Title.substring(0,15);
         if (dishes[i].Title.length > 15) {
@@ -18,14 +18,14 @@ function dinnerDishes(dishes, model, dinnerDishes) {
 		html += '<p id="name">' + name + '</p>';
 		html += '</div>';
 		html += '</div>';
-		html += '<p id="cost">' + model.getTotalDishPrice(dishes[i].RecipeID) + ' SEK</p>';
+		html += '<p id="cost">' + Math.round(model.getTotalDishPrice(dishes[i].RecipeID)) + ' SEK</p>';
 		html += '</div>';
 
 		totalCost += model.getTotalDishPrice(dishes[i].RecipeID);
 	}
 
 	html += '<div id="totalCost" class="col-md-3">';
-		html += '<p>Total:</p><p id="cost">' + totalCost + ' SEK</p>';
+		html += '<p>Total:</p><p id="cost">' + Math.round(totalCost) + ' SEK</p>';
 	html += '</div>';
 
 	dinnerDishes.html(html);

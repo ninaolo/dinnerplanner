@@ -13,7 +13,7 @@ var DishDetailsView = function (container, model) {
 
     this.fillDishInfo = function(dish) {
         container.find("#dishName").html(dish.Title);
-        container.find("#dishPic").attr("src", (dish.ImageURL === null ? "" : dish.ImageURL));
+        container.find("#dishPic").attr("src", (dish.ImageURL === null ? "http://redirect.bigoven.com/pics/recipe-no-image.jpg" : dish.ImageURL));
         container.find("#dishPreparation").html(dish.Instructions);
         container.find("#nrOfPeople").html(model.getNumberOfGuests());
     };
