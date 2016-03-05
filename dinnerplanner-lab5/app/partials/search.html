@@ -4,14 +4,44 @@
 <!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
 not support it in free version) and list all the dishes that match the search. -->
 
-<input ng-model="query"/>
-<button ng-click="search(query)">Find</button>
-{{status}}
-<ul>
-    <li ng-repeat="dish in dishes">
-        <img ng-src="{{dish.ImageURL}}"/>
-        {{dish.Title}}
-        <a ng-href="#/dish/{{dish.RecipeID}}">View more</a>
-        {{dish.Category}} {{dish.Subcategory}}
-    </li>
-</ul>
+<div id="selectDishView" class="col-xs-9">
+
+    <div class="row" id="search">
+        <h2>Select Dish</h2>
+        <div class="col-md-6">
+            <div class="input-group">
+
+                <input class="form-control" ng-model="query"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="search(query)">Search</button>
+                </span>
+                {{status}}
+                <ul>
+                    <li ng-repeat="dish in dishes">
+                        <img ng-src="{{dish.ImageURL}}"/>
+                        {{dish.Title}}
+                        <a ng-href="#/dish/{{dish.RecipeID}}">View more</a>
+                        {{dish.Category}} {{dish.Subcategory}}
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="btn-group">
+                <select class="form-control" id="dishTypeSelection">
+                    {{getDishTypes()}}
+                    {{getNumberOfGuests()}}
+                    <option ng-repeat="type in types">
+                        {{type}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" id="showSearchResults"></div>
+
+</div>
