@@ -83,7 +83,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
   this.addDishToMenu = function(id,type) {
-    this.getDish(id, function(dish) { // Callback function which runs when ajax is complete
+    this.getDish(id, function(dish) {
       if(type in menu){
         delete menu[type];
       }
