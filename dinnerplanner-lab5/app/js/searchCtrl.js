@@ -9,7 +9,7 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
 
     $scope.search = function(query, dishType) {
         $scope.status = "Searching...";
-        var titleSearch = (query == undefined ? "" : query) + " " + (dishType == undefined ? "" : dishType);
+        var titleSearch = (query == undefined ? "" : query) + (dishType == undefined ? "" : dishType);
         console.log(titleSearch);
         Dinner.DishSearch.get({title_kw:titleSearch}, function(data){
             $scope.dishes=data.Results;

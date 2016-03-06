@@ -72,23 +72,23 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   //Returns the total price for a specific dish in the menu (all ingredients multiplied by the number of guests)
   this.getTotalDishPrice = function(id) {
-    var dish = this.getMenuDishById(id);
-    var total = 0;
-    for(var i = 0; i < dish.Ingredients.length; i++) {
-      total += numberOfGuests * dish.Ingredients[i].Quantity;
-    }
-    return total;
+    this.Dish.get({id:id}, function success(dish) {
+      var total = 0;
+      for(var i = 0; i < dish.Ingredients.length; i++) {
+        total += numberOfGuests * dish.Ingredients[i].Quantity;
+      }
+      return total;
+    });
   };
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
-  this.addDishToMenu = function(id,type) {
-    this.getDish(id, function(dish) {
-      if(type in menu){
+  this.addDishToMenu = function(id, type) {
+    var dish = this.Dish.get({id:id});
+    if(type in menu) {
         delete menu[type];
-      }
-      menu[type] = dish;
-    }.bind(this));
+    }
+    menu[type] = dish;
   };
 
   //Removes dish from menu
