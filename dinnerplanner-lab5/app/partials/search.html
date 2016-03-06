@@ -15,15 +15,7 @@ not support it in free version) and list all the dishes that match the search. -
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-click="search(query)">Search</button>
                 </span>
-                {{status}}
-                <ul>
-                    <li ng-repeat="dish in dishes">
-                        <img ng-src="{{dish.ImageURL}}"/>
-                        {{dish.Title}}
-                        <a ng-href="#/dish/{{dish.RecipeID}}">View more</a>
-                        {{dish.Category}} {{dish.Subcategory}}
-                    </li>
-                </ul>
+
 
             </div>
         </div>
@@ -42,6 +34,27 @@ not support it in free version) and list all the dishes that match the search. -
 
     </div>
 
-    <div class="row" id="showSearchResults"></div>
+    <div class="row" id="showSearchResults">
+        {{status}}
+            <div ng-repeat="dish in dishes">
+                <div class="col-md-3">
+                    <div class="image-box dish">
+                        <a ng-href="#/dish/{{dish.RecipeID}}">
+                            <img ng-src="{{dish.ImageURL}}"/>
+                        </a>
+                        <div class='desc'>
+                            <p>
+                                {{dish.Title.substring(0,15)}}
+                                <span ng-if="dish.Title.length > 15">...</span>
+                            </p>
+                        </div>
+                    </div>
+                    <p ng-if="dish.Description != undefined">
+                        {{dish.Description.substring(0,90)}}
+                        <span ng-if="dish.Description.length > 90">...</span>
+                    </p>
+                </div>
+            </div>
+    </div>
 
 </div>
