@@ -13,7 +13,7 @@ not support it in free version) and list all the dishes that match the search. -
 
                 <input class="form-control" ng-model="query"/>
                 <span class="input-group-btn">
-                    <button class="btn btn-default" ng-click="search(query)">Search</button>
+                    <button class="btn btn-default" ng-click="search(query, dishType)">Search</button>
                 </span>
 
 
@@ -22,9 +22,7 @@ not support it in free version) and list all the dishes that match the search. -
 
         <div class="col-md-6">
             <div class="btn-group">
-                <select class="form-control" id="dishTypeSelection">
-                    {{getDishTypes()}}
-                    {{getNumberOfGuests()}}
+                <select ng-model="dishType" class="form-control" id="dishTypeSelection" ng-change="search(query, dishType)">
                     <option ng-repeat="type in types">
                         {{type}}
                     </option>
