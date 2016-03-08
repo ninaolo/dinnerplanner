@@ -34,4 +34,8 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
     Dinner.removeDishFromMenu(id);
   };
 
+  $scope.getTotalDishPrice = function(dish) {
+    return Dinner.getTotalDishPrice(dish);
+  }
+
 });

@@ -11,7 +11,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   // a bit to take the advantage of Angular resource service
   // check lab 5 instructions for details
 
-  var BIGOVEN_KEY = "XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN";
+  var BIGOVEN_KEY = "66J8l00npnHHZcCNLRhxkfW1OHxbojy4";
 
   this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key: BIGOVEN_KEY});
   this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key: BIGOVEN_KEY});
@@ -56,7 +56,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.getTotalMenuPrice = function() {
     var totalMenuPrice = 0;
     for(var key in menu){
-      totalMenuPrice += this.getTotalDishPrice(menu[key].RecipeID);
+      totalMenuPrice += this.getTotalDishPrice(menu[key]);
     }
     return totalMenuPrice;
   };
@@ -71,21 +71,18 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   };
 
   //Returns the total price for a specific dish in the menu (all ingredients multiplied by the number of guests)
-  this.getTotalDishPrice = function(id) {
-    this.Dish.get({id:id}, function success(dish) {
+  this.getTotalDishPrice = function(dish) {
       var total = 0;
       for(var i = 0; i < dish.Ingredients.length; i++) {
         total += numberOfGuests * dish.Ingredients[i].Quantity;
       }
       return total;
-    });
   };
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
-  this.addDishToMenu = function(dish) {
-    //var dish = this.Dish.get({id:id});
-    var type = "Starer";
+  this.addDishToMenu = function(dish, type) {
+    var type = "Starter";
     if(type in menu) {
         delete menu[type];
     }
