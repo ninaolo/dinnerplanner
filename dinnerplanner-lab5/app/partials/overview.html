@@ -2,8 +2,26 @@
 
     <div class="row">
 
-        <div id="dinnerDishes">
-        </div>
+        <div class="row" id="dinnerDishes">
+            <div ng-repeat="dish in menu">
+                <div class="col-md-3">
+                    <div class="image-box dish">
+                        <a ng-href="#/dish/{{dish.RecipeID}}">
+                            <img ng-src="{{dish.ImageURL}}"/>
+                        </a>
+                        <div class='desc'>
+                            <p>
+                                {{dish.Title.substring(0,15)}}
+                                <span ng-if="dish.Title.length > 15">...</span>
+                            </p>
+                        </div>
+                    </div>
+                    <p ng-if="dish.Description != undefined">
+                        {{dish.Description.substring(0,90)}}
+                        <span ng-if="dish.Description.length > 90">...</span>
+                    </p>
+                </div>
+            </div>
 
     </div>
 

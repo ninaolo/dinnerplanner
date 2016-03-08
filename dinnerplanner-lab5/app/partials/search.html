@@ -22,10 +22,7 @@ not support it in free version) and list all the dishes that match the search. -
 
         <div class="col-md-6">
             <div class="btn-group">
-                <select ng-model="dishType" class="form-control" id="dishTypeSelection" ng-change="search(query, dishType)">
-                    <option ng-repeat="type in types">
-                        {{type}}
-                    </option>
+                <select ng-init="dishType = types[0]" ng-model="dishType" class="form-control" ng-options="type as type for type in types"  id="dishTypeSelection" ng-change="search(query, dishType)">
                 </select>
             </div>
         </div>

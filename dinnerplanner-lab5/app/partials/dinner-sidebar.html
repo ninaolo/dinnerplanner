@@ -14,7 +14,7 @@ this with Total price of the menu -->
         </div>
 
         <div class="row" id="guests">
-            <p>People: {{getNumberOfGuests()}}</p>
+            <p>Peopl: {{getNumberOfGuests()}}</p>
             <input class="form-control" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/><br>
         </div>
 
@@ -30,27 +30,32 @@ this with Total price of the menu -->
         </div>
     </div>
 
-    <div class="row" id="dishes" ng-repeat="dish in getFullMenu()">
+
+   <div class="row" id="dishes" ng-repeat="dish in getFullMenu()">
         <div class='row'>
             <div class='col-md-6'>
                 {{dish.Title}}
             </div>
             <div class='col-md-4'>
-                {{Math.round(getTotalDishPrice(dish.RecipeID))}}
+                {{Math.round(getTotalDishPrice(dish))}}
             </div>
+
             <div class='col-md-2'>
-                <span id='remove-" + dishes[i].RecipeID + "' class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+                <span ng-click="removeDishFromMenu(dish.RecipeID)" id='remove-" + dishes[i].RecipeID + "' class='glyphicon glyphicon-remove' aria-hidden='true'></span>
             </div>
-        </div>
+               </div>
+           <hr>
+<!--
+           <div class='row'>
+               <div class='col-md-6 col-md-offset-6'>
+                   SEK {{Math.round(getTotalMenuPrice())}}
+               </div>
+           </div>
+           -->
+
     </div>
 
-    <hr>
 
-    <div class='row'>
-        <div class='col-md-6 col-md-offset-6'>
-            SEK {{Math.round(getTotalMenuPrice())}}
-        </div>
-    </div>
 
     <div class="row" id="confirm">
         <a id="confirmDinner" href="#/overview" class="btn btn-primary">Confirm dinner</a>

@@ -11,7 +11,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   // a bit to take the advantage of Angular resource service
   // check lab 5 instructions for details
 
-  var BIGOVEN_KEY = "8vtk7KykflO5IzB96kb0mpot0sU40096";
+  var BIGOVEN_KEY = "XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN";
 
   this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key: BIGOVEN_KEY});
   this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key: BIGOVEN_KEY});
@@ -19,6 +19,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   var numberOfGuests = 8;
   var menu = {};
+
+  setTimeout(function() {
+    menu["Dessert"] = {"Title":"Dough"}
+  }, 1000);
 
   this.setNumberOfGuests = function(num) {
     if (num > 0) {
@@ -83,12 +87,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
-  this.addDishToMenu = function(id, type) {
-    var dish = this.Dish.get({id:id});
+  this.addDishToMenu = function(dish) {
+    //var dish = this.Dish.get({id:id});
+    var type = "Starer";
     if(type in menu) {
         delete menu[type];
     }
     menu[type] = dish;
+    console.log(menu);
+    console.log(dish);
   };
 
   //Removes dish from menu
@@ -96,6 +103,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     for (var key in menu) {
       if (menu[key].RecipeID == id) {
         delete menu[key];
+        console.log(menu);
       }
     }
   };
