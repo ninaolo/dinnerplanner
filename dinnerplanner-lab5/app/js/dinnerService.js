@@ -20,10 +20,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   var numberOfGuests = 8;
   var menu = {};
 
-  setTimeout(function() {
-    menu["Dessert"] = {"Title":"Dough"}
-  }, 1000);
-
   this.setNumberOfGuests = function(num) {
     if (num > 0) {
       numberOfGuests = num;

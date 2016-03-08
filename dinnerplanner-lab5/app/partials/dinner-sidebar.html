@@ -14,7 +14,7 @@ this with Total price of the menu -->
         </div>
 
         <div class="row" id="guests">
-            <p>Peopl: {{getNumberOfGuests()}}</p>
+            <p>People: {{getNumberOfGuests()}}</p>
             <input class="form-control" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/><br>
         </div>
 
@@ -45,13 +45,12 @@ this with Total price of the menu -->
             </div>
                </div>
            <hr>
-<!--
+
            <div class='row'>
                <div class='col-md-6 col-md-offset-6'>
-                   SEK {{Math.round(getTotalMenuPrice())}}
+                   SEK {{Math.round(totalMenuPrice)}}
                </div>
            </div>
-           -->
 
     </div>
 
