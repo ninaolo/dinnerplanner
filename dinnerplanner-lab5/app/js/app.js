@@ -44,7 +44,7 @@ dinnerPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/search.html',
         controller: 'SearchCtrl'
       }).
-      when('/dish/:dishId', {
+      when('/dish/:dishId/:type', {
         templateUrl: 'partials/dish.html',
         controller: 'DishCtrl'
       }).

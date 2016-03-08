@@ -76,13 +76,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       for(var i = 0; i < dish.Ingredients.length; i++) {
         total += numberOfGuests * dish.Ingredients[i].Quantity;
       }
-      return total;
+      return Math.round(total);
   };
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
   this.addDishToMenu = function(dish, type) {
-    var type = "Starter";
     if(type in menu) {
         delete menu[type];
     }

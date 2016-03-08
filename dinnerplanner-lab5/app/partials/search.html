@@ -34,7 +34,7 @@ not support it in free version) and list all the dishes that match the search. -
             <div ng-repeat="dish in dishes">
                 <div class="col-md-3">
                     <div class="image-box dish">
-                        <a ng-href="#/dish/{{dish.RecipeID}}">
+                        <a ng-href="#/dish/{{dish.RecipeID}}/{{dishType}}">
                             <img ng-src="{{dish.ImageURL}}"/>
                         </a>
                         <div class='desc'>

@@ -15,7 +15,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   };
 
   $scope.addDishToMenu = function() {
-    Dinner.addDishToMenu($scope.dish);
+    Dinner.addDishToMenu($scope.dish, $routeParams.type);
   };
 
 });
