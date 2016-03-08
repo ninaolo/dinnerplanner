@@ -4,7 +4,7 @@
 
         <div class="row" id="dinnerDishes">
             <div ng-repeat="dish in menu">
-                <div class="col-md-3">
+                <div class="col-md-3" id="dish">
                     <div class="image-box dish">
                         <a ng-href="#/dish/{{dish.RecipeID}}">
                             <img ng-src="{{dish.ImageURL}}"/>
@@ -16,10 +16,12 @@
                             </p>
                         </div>
                     </div>
-                    <p ng-if="dish.Description != undefined">
-                        {{dish.Description.substring(0,90)}}
-                        <span ng-if="dish.Description.length > 90">...</span>
+                    <p class="cost">
+                        {{getTotalDishPrice(dish)}} SEK
                     </p>
+                </div>
+                <div id="totalCost" class="col-md-3">
+                    <p>Total:</p><p class="cost">{{Math.round(totalMenuPrice)}} SEK</p>
                 </div>
             </div>
 

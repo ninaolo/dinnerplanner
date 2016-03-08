@@ -1,0 +1,21 @@
+<div id="instructionsView" class="col-xs-12">
+
+    <div ng-repeat="dish in menu">
+       <div class="row">
+        <div class="col-md-3">
+                <img ng-src="{{dish.ImageURL}}"/>
+        </div>
+       <div class="col-md-4">
+           <h1>{{dish.Title}}</h1>
+           <p><br><span>{{dish.Description}}</span></p>
+       </div>
+        <div class="col-md-4 col-md-offset-1">
+           <h1>Preparation</h1>
+          <p>{{dish.Instructions}}</p>
+          </div>
+       </div>
+
+    </div>
+
+
+</div>
