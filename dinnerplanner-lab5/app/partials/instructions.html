@@ -2,7 +2,7 @@
 
 <div id="instructionsView" class="col-xs-12">
 
-    <div ng-repeat="dish in menu">
+    <div ng-repeat="dish in getFullMenu()">
        <div class="row">
         <div class="col-md-3">
                 <img ng-src="{{dish.ImageURL}}"/>
