@@ -15,7 +15,7 @@ this with Total price of the menu -->
 
         <div class="row" id="guests">
             <p>People: {{getNumberOfGuests()}}</p>
-            <input class="form-control" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)"/><br>
+            <input min="1" class="form-control" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)"/><br>
         </div>
 
     </div>
