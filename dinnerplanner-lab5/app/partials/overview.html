@@ -2,11 +2,9 @@
 
 <div id="dinnerView" class="col-xs-12">
 
-    <div class="row">
-
         <div class="row" id="dinnerDishes">
             <div>
-                <div class="col-md-3" id="dish" ng-repeat="dish in menu">
+                <div class="col-md-3" id="dish" ng-repeat="dish in getFullMenu()">
                     <div class="image-box dish">
                         <a ng-href="#/dish/{{dish.RecipeID}}">
                             <img ng-src="{{dish.ImageURL}}"/>
@@ -23,11 +21,10 @@
                     </p>
                 </div>
                 <div id="totalCost" class="col-md-3">
-                    <p>Total:</p><p class="cost">{{Math.round(totalMenuPrice)}} SEK</p>
+                    <p>Total:</p><p class="cost">{{getTotalMenuPrice()}} SEK</p>
                 </div>
             </div>
-
-    </div>
+        </div>
 
     <div class="row">
         <hr>

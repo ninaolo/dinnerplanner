@@ -18,6 +18,11 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
     this.Dish = $resource('http://api.bigoven.com/recipe/:id', {api_key: BIGOVEN_KEY});
 
     var numberOfGuests = $cookieStore.get("numberOfGuests");
+
+    if (numberOfGuests === undefined) {
+        numberOfGuests = 4;
+    }
+
     cookieMenu = $cookieStore.get("menu");
 
     console.log("COOKIES");
