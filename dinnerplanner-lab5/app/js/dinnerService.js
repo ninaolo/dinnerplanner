@@ -19,21 +19,36 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
     var numberOfGuests = $cookieStore.get("numberOfGuests");
     cookieMenu = $cookieStore.get("menu");
-    console.log(cookieMenu);
 
+    console.log("COOKIES");
+    console.log(cookieMenu);
+    console.log(numberOfGuests);
+
+    this.addCookieDishToMenu = function(key) {
+        this.Dish.get({id: cookieMenu[key]}, function (dish) {
+            menu[key] = dish;
+        });
+    };
+
+    this.updateCookieMenu = function () {
+        cookieMenu = {};
+        for (var key in menu) {
+            cookieMenu[key] = menu[key].RecipeID;
+        }
+    };
 
     var menu = {};
-/*
+
     if (cookieMenu !== undefined) {
-        cookieMenu.forEach(function(value, key, map) {
-            this.Dish.get({id: cookieMenu[key]}, function (dish) {
-                menu[key] = dish;
-                console.log(menu);
-            });
-        });
-    }*/
+        for (var key in cookieMenu) {
+            this.addCookieDishToMenu(key);
+        }
+    }
+
+
 
     // forEach = asynkron men funkar ej för {} utan för Map
+
 
 
     this.setNumberOfGuests = function (num) {
@@ -119,13 +134,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         }
         this.updateCookieMenu();
         $cookieStore.put("menu", cookieMenu);
-    };
-
-    this.updateCookieMenu = function () {
-        cookieMenu = {};
-        for (var key in menu) {
-            cookieMenu[key] = menu[key].RecipeID;
-        }
     };
 
     // Angular service needs to return an object that has all the
