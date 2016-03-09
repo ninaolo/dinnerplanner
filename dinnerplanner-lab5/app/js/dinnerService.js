@@ -109,11 +109,13 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
     //Returns the total price for a specific dish in the menu (all ingredients multiplied by the number of guests)
     this.getTotalDishPrice = function (dish) {
-        var total = 0;
-        for (var i = 0; i < dish.Ingredients.length; i++) {
-            total += numberOfGuests * dish.Ingredients[i].Quantity;
+        if (dish !== undefined) {
+            var total = 0;
+            for (var i = 0; i < dish.Ingredients.length; i++) {
+                total += numberOfGuests * dish.Ingredients[i].Quantity;
+            }
+            return Math.round(total);
         }
-        return Math.round(total);
     };
 
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu

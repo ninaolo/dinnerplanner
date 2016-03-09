@@ -40,7 +40,7 @@ Instructions, Ingredients and total cost. -->
             <div class="row"><hr></div>
             <div class="row">
                 <div class="col-md-2 col-md-offset-8" id="totalCurrency">SEK</div>
-                <div class="col-md-2" id="total">{{totalDishPrice}}</div>
+                <div class="col-md-2" id="total">{{getTotalDishPrice(dish)}}</div>
             </div>
 
             <div class="col-md-12" id="confirmDish"><button class="btn btn-primary" ng-click="addDishToMenu()">Confirm dish</button></div>
